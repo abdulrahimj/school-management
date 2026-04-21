@@ -1,5 +1,6 @@
 package com.school.school_management;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 
@@ -28,6 +29,9 @@ public class Address {
    @JoinColumn(name = "student_id")
    //Creates "student_id" column in addresses table
    //This is the foreign key linking to student table
+   @JsonBackReference
+   //When converting to JSON, skip this field
+   //Prevent infinite loop
    private Student student;
 
    //No arg constructor (for JPA)
