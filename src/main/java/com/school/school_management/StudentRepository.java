@@ -7,6 +7,5 @@ import java.util.Optional;
 
 @Repository
 public interface StudentRepository extends JpaRepository<Student, Long> {
-   @Override
-   Optional<Student> findById(Long aLong);
+   Optional<Student> findByEmail(String Email);
 }
