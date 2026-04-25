@@ -36,7 +36,7 @@ public class StudentController {
    }
 
    //POST /api/students/1/address -> Add address to student
-   @PostMapping
+   @PostMapping("/{id}/address")
    public Student addAddress(
            @PathVariable Long id,
            @Valid @RequestBody Address address) {
@@ -44,6 +44,7 @@ public class StudentController {
    }
 
    //PUT /api/students/1
+   @PutMapping("/{id}")
    public Student updateStudent(
            @PathVariable Long id,
            @Valid @RequestBody Student student) {
