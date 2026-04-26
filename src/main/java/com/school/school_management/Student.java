@@ -4,6 +4,9 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 @Table(name = "students")
 public class Student {
@@ -34,6 +37,25 @@ public class Student {
    )
    @JsonManagedReference
    private Address address;
+
+   //Student has many courses
+   @ManyToMany(
+           fetch = FetchType.LAZY,
+           cascade = {CascadeType.PERSIST, CascadeType.MERGE}
+           //Only cascade SAVE and UPDATE, not delete
+           //Deleting student does not delete courses)
+   )
+   @JoinTable(
+           name = "student_courses",
+           //Name of the JOIN TABLE in database
+
+           joinColumns = @JoinColumn(name = "student_id"),
+           //column in join table for student ID
+
+           inverseJoinColumns = @JoinColumn(name = "course_id")
+           //column in join table for course ID
+   )
+   private Set<Course> courses = new HashSet<>();
 
    public Student() {}
 
@@ -81,5 +103,13 @@ public class Student {
 
    public void setAddress(Address address) {
       this.address = address;
+   }
+
+   public Set<Course> getCourse() {
+      return courses;
+   }
+
+   public void setCourse(Set<Course> course) {
+      this.courses = course;
    }
 }
