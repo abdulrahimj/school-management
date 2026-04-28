@@ -43,7 +43,7 @@ public class Student {
            fetch = FetchType.LAZY,
            cascade = {CascadeType.PERSIST, CascadeType.MERGE}
            //Only cascade SAVE and UPDATE, not delete
-           //Deleting student does not delete courses)
+           //Deleting student does not delete courses
    )
    @JoinTable(
            name = "student_courses",
