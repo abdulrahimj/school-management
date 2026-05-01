@@ -38,7 +38,7 @@ public class CourseController {
 
    //POST /api/courses/1/enroll/2
    //Enroll student 2 in course 1
-   @PostMapping("/{courseId}/{studentId}")
+   @PostMapping("/{courseId}/enroll/{studentId}")
    public Student enrollStudent(
            @PathVariable Long courseId,
            @PathVariable Long studentId) {
@@ -47,7 +47,7 @@ public class CourseController {
 
    //DELETE /api/courses/1/unenroll/2
    //Remove student 2 from course 1
-   @DeleteMapping("/{courseId}/{studentId}")
+   @DeleteMapping("/{courseId}/unenroll/{studentId}")
    public Student unenrollStudent(
            @PathVariable Long courseId,
            @PathVariable Long studentId) {
@@ -62,7 +62,7 @@ public class CourseController {
    }
 
    //DELETE /api/courses/1
-   @DeleteMapping("{id}")
+   @DeleteMapping("/{id}")
    @ResponseStatus(HttpStatus.NO_CONTENT)
    public void deleteCourse(@PathVariable Long id) {
       courseService.deleteCourse(id);
