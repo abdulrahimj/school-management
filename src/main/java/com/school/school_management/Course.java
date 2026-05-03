@@ -29,6 +29,11 @@ public class Course {
    @JsonIgnore
    private Set<Student> students = new HashSet<>();
 
+   //Many courses can belong to one teacher
+   @ManyToOne
+   @JoinColumn(name = "teacher_id")
+   private Teacher teacher;
+
    public Course() {}
 
    public Course(Long id, String name, String description, Set<Student> students) {
