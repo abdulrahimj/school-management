@@ -1,7 +1,10 @@
 package com.school.school_management;
 
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 
+@Service
 public class TeacherService {
 
    private final TeacherRepository teacherRepository;
