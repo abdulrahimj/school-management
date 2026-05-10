@@ -1,5 +1,6 @@
-package com.school.school_management;
+package com.school.school_management.teacher;
 
+import com.school.school_management.course.Course;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

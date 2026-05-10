@@ -1,5 +1,6 @@
-package com.school.school_management;
+package com.school.school_management.teacher;
 
+import com.school.school_management.course.Course;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

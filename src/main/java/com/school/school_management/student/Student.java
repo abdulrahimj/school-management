@@ -1,6 +1,8 @@
-package com.school.school_management;
+package com.school.school_management.student;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.school.school_management.address.Address;
+import com.school.school_management.course.Course;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 

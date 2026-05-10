@@ -1,5 +1,9 @@
-package com.school.school_management;
+package com.school.school_management.course;
 
+import com.school.school_management.student.Student;
+import com.school.school_management.student.StudentRepository;
+import com.school.school_management.teacher.Teacher;
+import com.school.school_management.teacher.TeacherRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
