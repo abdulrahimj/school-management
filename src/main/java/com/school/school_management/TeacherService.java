@@ -3,16 +3,15 @@ package com.school.school_management;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Set;
 
 @Service
 public class TeacherService {
 
    private final TeacherRepository teacherRepository;
-   private final CourseRepository courseRepository;
 
-   public TeacherService (TeacherRepository teacherRepository, CourseRepository courseRepository) {
+   public TeacherService (TeacherRepository teacherRepository) {
       this.teacherRepository = teacherRepository;
-      this.courseRepository = courseRepository;
    }
 
    //Get all teachers
@@ -42,7 +41,7 @@ public class TeacherService {
       Teacher existingTeacher = getTeacherById(id);
       existingTeacher.setName(updatedTeacher.getName());
       existingTeacher.setEmail(updatedTeacher.getEmail());
-      existingTeacher.setSpecification(updatedTeacher.getSpecification());
+      existingTeacher.setSpecialization(updatedTeacher.getSpecialization());
       return teacherRepository.save(existingTeacher);
    }
 
@@ -52,29 +51,12 @@ public class TeacherService {
       teacherRepository.deleteById(id);
    }
 
-   //Assign teacher to course
-   public Course assignTeacherToCourse(Long teacherId, Long courseId) {
-      //Find teacher
+   //Get all courses taught by teacher
+   public Set<Course> getCoursesByTeacher(Long teacherId) {
+
+      //check if teacher exists
       Teacher teacher = getTeacherById(teacherId);
 
-      //Find course
-      Course course = courseRepository.findById(courseId)
-              .orElseThrow(() -> new RuntimeException(
-                      "Course ID " + courseId + " not found"
-              ));
-
-      //Check if teacher is already assigned to course
-      if (teacher.getCourses().contains(course)) {
-         throw new RuntimeException(teacher.getName() + " is already assigned to " + course.getName());
-      }
-
-      //Assign teacher to a course
-      course.setTeacher(teacher);
-
-      //Add course to teacher's courses
-      teacher.getCourses().add(course);
-
-      //Save courses
-      return courseRepository.save(course);
+      return teacher.getCourses();
    }
 }

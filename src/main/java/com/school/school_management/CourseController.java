@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Set;
 
 @RestController
-@RequestMapping("api/courses")
+@RequestMapping("/api/courses")
 public class CourseController {
 
    private final CourseService courseService;
@@ -25,14 +25,14 @@ public class CourseController {
 
    //GEt /api/courses/1
    @GetMapping("/{id}")
-   public Course getCourseById(@PathVariable Long Id) {
-      return courseService.getCourseById(Id);
+   public Course getCourseById(@PathVariable Long id) {
+      return courseService.getCourseById(id);
    }
 
    //POST /api/courses
    @PostMapping
    @ResponseStatus(HttpStatus.CREATED)
-   public Course createCourses(@Valid @RequestBody Course course) {
+   public Course createCourse(@Valid @RequestBody Course course) {
       return courseService.createCourse(course);
    }
 
@@ -66,5 +66,15 @@ public class CourseController {
    @ResponseStatus(HttpStatus.NO_CONTENT)
    public void deleteCourse(@PathVariable Long id) {
       courseService.deleteCourse(id);
+   }
+
+   //POST /api/course/1/teacher/2
+   //assign teacher 2 to course 1
+   @PostMapping("/{courseId}/teacher/{teacherId}")
+   public Course assignTeacher(
+           @PathVariable Long courseId,
+           @PathVariable Long teacherId) {
+
+      return courseService.assignTeacherToCourse(courseId, teacherId);
    }
 }

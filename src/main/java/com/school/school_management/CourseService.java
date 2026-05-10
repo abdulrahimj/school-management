@@ -10,12 +10,15 @@ public class CourseService {
 
    private final CourseRepository courseRepository;
    private final StudentRepository studentRepository;
+   private final TeacherRepository teacherRepository;
 
    public CourseService(
            CourseRepository courseRepository,
-           StudentRepository studentRepository) {
+           StudentRepository studentRepository,
+           TeacherRepository teacherRepository) {
       this.courseRepository = courseRepository;
       this.studentRepository = studentRepository;
+      this.teacherRepository = teacherRepository;
    }
 
    //Get all courses
@@ -32,7 +35,7 @@ public class CourseService {
    //Create a new course
    public Course createCourse(Course course) {
       if (courseRepository.findByName(course.getName()).isPresent()) {
-         throw new RuntimeException("Course " + course.getName() + " already exits");
+         throw new RuntimeException("Course " + course.getName() + " already exists");
       }
       return courseRepository.save(course);
    }
@@ -93,7 +96,31 @@ public class CourseService {
 
    //Delete course
    public void deleteCourse(Long courseId) {
-      getCourseById(courseId);
+      Course course = getCourseById(courseId);
+
+      for (Student student : course.getStudents()) {
+         student.getCourse().remove(course);
+      }
+
+      course.getStudents().clear();
       courseRepository.deleteById(courseId);
+   }
+
+   //Assign teacher to course
+   public Course assignTeacherToCourse(Long courseId, Long teacherId) {
+      //find course
+      Course course = getCourseById(courseId);
+
+      //find teacher
+      Teacher teacher = teacherRepository.findById(teacherId)
+              .orElseThrow(() -> new RuntimeException(
+                      "Teacher with ID " + teacherId + " not found"
+              ));
+
+      //assign teacher to course
+      course.setTeacher(teacher);
+
+      //save course
+      return courseRepository.save(course);
    }
 }

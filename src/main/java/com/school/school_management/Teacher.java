@@ -1,11 +1,11 @@
 package com.school.school_management;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -27,18 +27,19 @@ public class Teacher {
 
    @NotBlank(message = "Specification is required")
    @Column(nullable = false)
-   private String specification;
+   private String specialization;
 
    //Relationship: One teacher teaches Many courses
-   @OneToMany(mappedBy = "teacher")
+   @OneToMany(mappedBy = "teacher", fetch = FetchType.LAZY)
+   @JsonIgnore
    private Set<Course> courses = new HashSet<>();
 
    public Teacher () {}
 
-   public Teacher(String name, String email, String specification, Set<Course> courses) {
+   public Teacher(String name, String email, String specialization, Set<Course> courses) {
       this.name = name;
       this.email = email;
-      this.specification = specification;
+      this.specialization = specialization;
       this.courses = courses;
    }
 
@@ -66,12 +67,12 @@ public class Teacher {
       this.email = email;
    }
 
-   public String getSpecification() {
-      return specification;
+   public String getSpecialization() {
+      return specialization;
    }
 
-   public void setSpecification(String specification) {
-      this.specification = specification;
+   public void setSpecialization(String specialization) {
+      this.specialization = specialization;
    }
 
    public Set<Course> getCourses() {

@@ -30,7 +30,7 @@ public class Course {
    private Set<Student> students = new HashSet<>();
 
    //Many courses can belong to one teacher
-   @ManyToOne
+   @ManyToOne(fetch = FetchType.LAZY)
    @JoinColumn(name = "teacher_id")
    private Teacher teacher;
 
