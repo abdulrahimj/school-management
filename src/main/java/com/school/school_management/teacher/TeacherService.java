@@ -1,6 +1,11 @@
 package com.school.school_management.teacher;
 
 import com.school.school_management.course.Course;
+import com.school.school_management.dto.PageResponse;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -16,8 +21,34 @@ public class TeacherService {
    }
 
    //Get all teachers
-   public List<Teacher> getAllTeachers() {
-      return teacherRepository.findAll();
+   public PageResponse<Teacher> getAllTeachers(
+           int pageNum,
+           int pageSize,
+           String sortBy,
+           String sortDir) {
+
+      //create sort object
+      Sort sort = sortDir.equalsIgnoreCase("asc")
+              ? Sort.by(sortBy).ascending() : Sort.by(sortBy).descending();
+
+      Pageable pageable = PageRequest.of(pageNum, pageSize, sort);
+
+      Page<Teacher> page = teacherRepository.findAll(pageable);
+
+      return buildPageResponse(page);
+   }
+
+   //HELPER: build page response
+   public PageResponse<Teacher> buildPageResponse(Page<Teacher> page) {
+      return new PageResponse<>(
+        page.getContent(),
+        page.getNumber(),
+        page.getSize(),
+        page.getTotalElements(),
+        page.getTotalPages(),
+        page.isLast(),
+        page.isFirst()
+      );
    }
 
    //Get one teacher by ID
