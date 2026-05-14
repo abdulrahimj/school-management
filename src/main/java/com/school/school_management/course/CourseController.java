@@ -1,5 +1,6 @@
 package com.school.school_management.course;
 
+import com.school.school_management.dto.PageResponse;
 import com.school.school_management.student.Student;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -18,10 +19,16 @@ public class CourseController {
       this.courseService = courseService;
    }
 
+   //get all courses with pagination and sorting
    //GET /api/courses
    @GetMapping
-   public List<Course> getAllCourses() {
-      return courseService.getAllCourses();
+   public PageResponse<Course> getAllCourses(
+           @RequestParam(defaultValue = "0") int page,
+           @RequestParam(defaultValue = "1") int size,
+           @RequestParam(defaultValue = "id") String sortBy,
+           @RequestParam(defaultValue = "asc") String sortDir
+   ) {
+      return courseService.getAllCourses(page, size, sortBy, sortDir);
    }
 
    //GEt /api/courses/1
