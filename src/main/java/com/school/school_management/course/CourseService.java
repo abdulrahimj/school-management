@@ -49,6 +49,25 @@ public class CourseService {
       return buildPageResponse(page);
    }
 
+   public PageResponse<Course> searchCoursesByName(
+           String name,
+           int pageNum,
+           int pageSize,
+           String sortBy,
+           String sortDir) {
+
+      //create sort object
+      Sort sort = sortDir.equalsIgnoreCase("asc")
+              ? Sort.by(sortBy).ascending() : Sort.by(sortBy).descending();
+
+      //create pageable object
+      Pageable pageable = PageRequest.of(pageNum, pageSize, sort);
+
+      Page<Course> page = courseRepository.findByNameContaining(name, pageable);
+
+      return buildPageResponse(page);
+   }
+
    //HELPER: build pageResponse
    public PageResponse<Course> buildPageResponse(Page<Course> page) {
       return new PageResponse<>(

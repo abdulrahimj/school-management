@@ -31,6 +31,19 @@ public class CourseController {
       return courseService.getAllCourses(page, size, sortBy, sortDir);
    }
 
+   //search courses with pagination
+   //GET /api/courses/search?name=science&page=1&size=2
+   @GetMapping("/search")
+   public PageResponse<Course> searchCourses(
+           @RequestParam String name,
+           @RequestParam(defaultValue = "0") int page,
+           @RequestParam(defaultValue = "5") int size,
+           @RequestParam(defaultValue = "name") String sortBy,
+           @RequestParam(defaultValue = "desc") String sortDir) {
+
+      return courseService.searchCoursesByName(name, page, size, sortBy, sortDir);
+   }
+
    //GEt /api/courses/1
    @GetMapping("/{id}")
    public Course getCourseById(@PathVariable Long id) {
