@@ -1,6 +1,7 @@
 package com.school.school_management.teacher;
 
 import com.school.school_management.course.Course;
+import com.school.school_management.dto.PageResponse;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -20,8 +21,12 @@ public class TeacherController {
 
    //GET /api/teachers
    @GetMapping
-   public List<Teacher> getAllTeachers() {
-      return teacherService.getAllTeachers();
+   public PageResponse<Teacher> getAllTeachers(
+           @RequestParam(defaultValue = "0") int page,
+           @RequestParam(defaultValue = "5") int size,
+           @RequestParam(defaultValue = "id") String sortBy,
+           @RequestParam(defaultValue = "asc") String sortDir) {
+      return teacherService.getAllTeachers(page, size, sortBy, sortDir);
    }
 
    //GET /api/teachers/id
