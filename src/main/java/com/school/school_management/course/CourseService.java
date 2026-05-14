@@ -1,9 +1,14 @@
 package com.school.school_management.course;
 
+import com.school.school_management.dto.PageResponse;
 import com.school.school_management.student.Student;
 import com.school.school_management.student.StudentRepository;
 import com.school.school_management.teacher.Teacher;
 import com.school.school_management.teacher.TeacherRepository;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,9 +30,36 @@ public class CourseService {
       this.teacherRepository = teacherRepository;
    }
 
-   //Get all courses
-   public List<Course> getAllCourses() {
-      return courseRepository.findAll();
+   //Get all courses with pagination and sorting
+   public PageResponse<Course> getAllCourses(
+           int pageNum,
+           int size,
+           String sortBy,
+           String sortDir) {
+
+      //create sort object
+      Sort sort = sortDir.equalsIgnoreCase("asc")
+              ? Sort.by(sortBy).ascending() : Sort.by(sortBy).descending();
+
+      //create pageable object
+      Pageable pageable = PageRequest.of(pageNum, size, sort);
+
+      Page<Course> page = courseRepository.findAll(pageable);
+
+      return buildPageResponse(page);
+   }
+
+   //HELPER: build pageResponse
+   public PageResponse<Course> buildPageResponse(Page<Course> page) {
+      return new PageResponse<>(
+              page.getContent(),
+              page.getNumber(),
+              page.getSize(),
+              page.getTotalElements(),
+              page.getTotalPages(),
+              page.isLast(),
+              page.isFirst()
+      );
    }
 
    //Get course by ID
