@@ -9,7 +9,7 @@ import java.util.Optional;
 
 @Repository
 public interface StudentRepository extends JpaRepository<Student, Long> {
-   Optional<Student> findByEmail(String Email);
+   Optional<Student> findByEmail(String email);
 
    //Paginated version of findAll
    //spring data Jpa handles everything
