@@ -24,7 +24,7 @@ public class SchoolManagementApplication {
 			// Only add data if database is empty
 			if (studentRepository.count() == 0) {
 
-				studentRepository.save(new Student("Alice Johnson","alice@email.com", 20));
+				studentRepository.save(new Student("Alice Johnson","alice22@email.com", 25));
 				studentRepository.save(new Student("Bob Smith","bob@email.com", 22));
 				studentRepository.save(new Student("Charlie Brown","charlie@email.com", 19));
 				studentRepository.save(new Student("Diana Prince","diana@email.com", 21));
