@@ -1,7 +1,7 @@
 package com.school.school_management;
 
-import com.school.school_management.student.Student;
-import com.school.school_management.student.StudentRepository;
+import com.school.school_management.model.Student;
+import com.school.school_management.repo.StudentRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

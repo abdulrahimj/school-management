@@ -1,7 +1,6 @@
-package com.school.school_management.address;
+package com.school.school_management.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.school.school_management.student.Student;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 

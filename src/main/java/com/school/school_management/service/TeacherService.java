@@ -1,14 +1,15 @@
-package com.school.school_management.teacher;
+package com.school.school_management.service;
 
-import com.school.school_management.course.Course;
+import com.school.school_management.model.Course;
 import com.school.school_management.dto.PageResponse;
+import com.school.school_management.model.Teacher;
+import com.school.school_management.repo.TeacherRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Set;
 
 @Service

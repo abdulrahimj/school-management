@@ -1,5 +1,6 @@
-package com.school.school_management.student;
+package com.school.school_management.repo;
 
+import com.school.school_management.model.Student;
 import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

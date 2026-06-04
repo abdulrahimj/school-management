@@ -1,12 +1,13 @@
-package com.school.school_management.course;
+package com.school.school_management.controller;
 
+import com.school.school_management.service.CourseService;
 import com.school.school_management.dto.PageResponse;
-import com.school.school_management.student.Student;
+import com.school.school_management.model.Course;
+import com.school.school_management.model.Student;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 import java.util.Set;
 
 @RestController

@@ -1,7 +1,9 @@
-package com.school.school_management.student;
+package com.school.school_management.controller;
 
-import com.school.school_management.address.Address;
+import com.school.school_management.model.Address;
 import com.school.school_management.dto.PageResponse;
+import com.school.school_management.model.Student;
+import com.school.school_management.service.StudentService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

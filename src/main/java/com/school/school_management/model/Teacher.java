@@ -1,7 +1,6 @@
-package com.school.school_management.teacher;
+package com.school.school_management.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.school.school_management.course.Course;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
