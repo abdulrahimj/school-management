@@ -30,6 +30,7 @@ public class SecurityConfig {
    }
 
    //SECURITY RULES
+   @Bean
    public SecurityFilterChain securityFilterChain (HttpSecurity http) throws Exception {
 
       http
@@ -85,8 +86,7 @@ public class SecurityConfig {
    //AUTHENTICATION PROVIDER
    @Bean
    public AuthenticationProvider authenticationProvider() {
-      DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
-      provider.setUserDetailsService(userDetailsService);
+      DaoAuthenticationProvider provider = new DaoAuthenticationProvider(userDetailsService);
       provider.setPasswordEncoder(passwordEncoder());
       return provider;
    }
