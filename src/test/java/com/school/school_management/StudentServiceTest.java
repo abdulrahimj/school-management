@@ -11,10 +11,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageImpl;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -48,22 +45,27 @@ public class StudentServiceTest {
    @DisplayName("Should return all students")
    void shouldReturnAllStudents() {
 
-      //ARRANGE: Set up the mock behavior
-      List<Student> students = List.of(alice, bob);
-      Page<Student> studentPage = new PageImpl<>(students);
+      // ARRANGE: Set up the mock behavior
+      Pageable pageable = PageRequest.of(0, 10, Sort.by("name").ascending());
+      Page<Student> studentPage = new PageImpl<>(List.of(alice, bob));
 
       when(studentRepository.findAll(any(Pageable.class)))
               .thenReturn(studentPage);
 
-      //ACT: Call the method  we are testing
-      PageResponse<Student> result = studentService.getAllStudents(0, 10, "name", "asc");
+      // ACT: Call the method we're testing
+      PageResponse<Student> result = studentService.getAllStudents(
+              0,
+              10,
+              "name",
+              "asc"
+      );
 
-      //ASSERT: Check the result is correct
+      // ASSERT: Check the result is correct
       assertThat(result.getContent()).hasSize(2);
       assertThat(result.getContent().get(0).getName()).isEqualTo("Alice");
       assertThat(result.getContent().get(1).getName()).isEqualTo("Bob");
 
-      //VERIFY: Was repository actually called?
+      // VERIFY: Was repository actually called?
       verify(studentRepository, times(1)).findAll(any(Pageable.class));
    }
 
