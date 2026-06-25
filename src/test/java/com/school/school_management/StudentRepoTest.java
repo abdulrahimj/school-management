@@ -32,7 +32,7 @@ public class StudentRepoTest {
               new Student("Alice Johnson", "alice@gmail.com", 20)
       );
       studentRepository.save(
-              new Student("Alice Smith", "alice.smith@gmailc.com", 22)
+              new Student("Alice Smith", "alice.smith@gmail.com", 22)
       );
       studentRepository.save(
               new Student("Bob Brown", "bob@gmail.com", 19)
@@ -47,7 +47,7 @@ public class StudentRepoTest {
       Optional<Student> result = studentRepository.findByEmail("alice@gmail.com");
 
       assertThat(result).isPresent();
-      assertThat(result.get().getName()).isEqualTo("Alcie Johnson");
+      assertThat(result.get().getName()).isEqualTo("Alice Johnson");
    }
 
    @Test
@@ -72,5 +72,48 @@ public class StudentRepoTest {
       assertThat(results)
               .extracting(Student::getName)
               .containsExactlyInAnyOrder("Alice Johnson", "Alice Smith");
+   }
+
+   //TEST: save and retrieve
+   @Test
+   @DisplayName("Should save and retrieve student correctly")
+   void shouldSaveAndRetrieveStudent() {
+
+      Student newStudent = new Student("Charlie", "charlie@gmail.com", 25);
+
+      Student saved = studentRepository.save(newStudent);
+
+      assertThat(saved.getId()).isNotNull();
+      //ID should be auto-generated (not null)
+
+      Optional<Student> found = studentRepository.findById(saved.getId());
+
+      assertThat(found).isPresent();
+      assertThat(found.get().getName()).isEqualTo("Charlie");
+   }
+
+   //TEST: Delete
+   @Test
+   @DisplayName("Should delete student by ID")
+   void shouldDeleteStudentById() {
+
+      Student student = studentRepository.findByEmail("bob@gmail.com").get();
+
+      studentRepository.deleteById(student.getId());
+
+      Optional<Student> found = studentRepository.findById(student.getId());
+
+      assertThat(found).isEmpty();
+      //should be gone after deletion
+   }
+
+   //TEST: Count
+   @Test
+   @DisplayName("Should return correct count")
+   void shouldReturnCorrectCount() {
+
+      long count = studentRepository.count();
+      assertThat(count).isEqualTo(3);
+      //we added 3 students in setup()
    }
 }
