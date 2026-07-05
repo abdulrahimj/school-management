@@ -36,6 +36,12 @@ public class Teacher {
 
    public Teacher () {}
 
+   public Teacher(String name, String email, String specialization) {
+      this.name = name;
+      this.email = email;
+      this.specialization = specialization;
+   }
+
    public Teacher(String name, String email, String specialization, Set<Course> courses) {
       this.name = name;
       this.email = email;

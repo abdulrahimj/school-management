@@ -93,7 +93,7 @@ public class AuthControllerTest {
                               .contentType(MediaType.APPLICATION_JSON)
                               .content(objectMapper.writeValueAsString(duplicate))
               )
-              .andExpect(status().is5xxServerError());
+              .andExpect(status().is4xxClientError());
       // ↑ Should fail! (We'll improve this in homework)
    }
 
@@ -164,7 +164,7 @@ public class AuthControllerTest {
                               .contentType(MediaType.APPLICATION_JSON)
                               .content(objectMapper.writeValueAsString(login))
               )
-              .andExpect(status().is5xxServerError());
+              .andExpect(status().is4xxClientError());
       // ↑ Authentication fails!
    }
 }

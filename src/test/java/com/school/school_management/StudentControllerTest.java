@@ -78,7 +78,7 @@ public class StudentControllerTest {
    @WithMockUser(roles = {"USER"})
    void shouldReturnStudentById() throws Exception {
 
-      mockMvc.perform(get("/api/students/", alice.getId()))
+      mockMvc.perform(get("/api/students/{id}", alice.getId()))
               .andExpect(status().isOk())
               .andExpect(jsonPath("$.name").value("Alice"))
               .andExpect(jsonPath("$.email")

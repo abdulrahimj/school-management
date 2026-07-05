@@ -35,6 +35,11 @@ public class Course {
    private Teacher teacher;
 
    public Course() {}
+   
+   public Course(String name, String description) {
+      this.name = name;
+      this.description = description;
+   }
 
    public Course(Long id, String name, String description, Set<Student> students) {
       this.id = id;
