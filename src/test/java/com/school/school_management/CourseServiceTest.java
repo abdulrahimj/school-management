@@ -25,9 +25,7 @@ import java.util.Optional;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.times;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 public class CourseServiceTest {
@@ -117,15 +115,15 @@ public class CourseServiceTest {
    @DisplayName("Should return course when ID exists")
    void shouldReturnCourseWhenIdExists() {
 
-      // ARRANGE
+      //ARRANGE
       when(courseRepository.findById(1L))
               .thenReturn(Optional.of(math));
-      // ↑ "When someone asks for ID 1, give them math"
+      //when someone asks for ID 1, return  math
 
-      // ACT
+      //ACT - call the actual method
       Course result = courseService.getCourseById(1L);
 
-      // ASSERT
+      //ASSERT - confirm our result work exactly as expected
       assertThat(result).isNotNull();
       assertThat(result.getId()).isEqualTo(1L);
       assertThat(result.getName()).isEqualTo("Mathematics");
@@ -150,5 +148,181 @@ public class CourseServiceTest {
               .hasMessageContaining("999");
       // ↑ "Calling getCourseById(999) MUST throw
       //    RuntimeException with '999' in the message"
+   }
+
+   @Test
+   @DisplayName("Should create course successfully")
+   void shouldCreateCourseSuccessfully() {
+
+      // ARRANGE
+      Course newCourse = new Course("Art", "Creative Arts");
+
+      // Name does NOT exist yet
+      when(courseRepository.findByName("Art"))
+              .thenReturn(Optional.empty());
+
+      // When save is called, return the course
+      when(courseRepository.save(newCourse))
+              .thenReturn(newCourse);
+
+      // ACT
+      Course result = courseService.createCourse(newCourse);
+
+      // ASSERT
+      assertThat(result).isNotNull();
+      assertThat(result.getName()).isEqualTo("Art");
+      assertThat(result.getDescription())
+              .isEqualTo("Creative Arts");
+
+      // VERIFY save was called exactly once
+      verify(courseRepository, times(1)).save(newCourse);
+   }
+
+   @Test
+   @DisplayName("Should throw exception when course name already exists")
+   void shouldThrowExceptionWhenCourseNameExists() {
+
+      // ARRANGE
+      Course duplicate = new Course(
+              "Mathematics",  // ← Same name as "math"!
+              "Another Math"
+      );
+
+      // Name ALREADY exists!
+      when(courseRepository.findByName("Mathematics"))
+              .thenReturn(Optional.of(math));
+
+      // ACT & ASSERT
+      assertThatThrownBy(() ->
+              courseService.createCourse(duplicate)
+      )
+              .isInstanceOf(RuntimeException.class)
+              .hasMessageContaining("Mathematics");
+
+      // VERIFY save was NEVER called!
+      verify(courseRepository, never()).save(any());
+      // ↑ If duplicate, we should STOP before saving!
+   }
+
+   @Test
+   @DisplayName("Should assign teacher to course successfully")
+   void shouldAssignTeacherToCourseSuccessfully() {
+
+      // ARRANGE
+      when(courseRepository.findById(1L))
+              .thenReturn(Optional.of(math));
+
+      when(teacherRepository.findById(1L))
+              .thenReturn(Optional.of(drSmith));
+
+      // When save is called, return the updated course
+      when(courseRepository.save(any(Course.class)))
+              .thenAnswer(invocation ->
+                      invocation.getArgument(0)
+              );
+      // ↑ "Return whatever was passed to save()"
+
+      // ACT
+      Course result = courseService
+              .assignTeacherToCourse(1L, 1L);
+
+      // ASSERT
+      assertThat(result).isNotNull();
+      assertThat(result.getTeacher()).isNotNull();
+      assertThat(result.getTeacher().getName())
+              .isEqualTo("Dr. Smith");
+
+      // VERIFY save was called
+      verify(courseRepository, times(1))
+              .save(any(Course.class));
+   }
+
+   @Test
+   @DisplayName("Should throw exception when course not found for assignment")
+   void shouldThrowExceptionWhenCourseNotFoundForAssignment() {
+
+      // ARRANGE
+      when(courseRepository.findById(999L))
+              .thenReturn(Optional.empty());
+
+      // ACT & ASSERT
+      assertThatThrownBy(() ->
+              courseService.assignTeacherToCourse(999L, 1L)
+      )
+              .isInstanceOf(RuntimeException.class)
+              .hasMessageContaining("999");
+
+      // VERIFY teacher was never even looked up!
+      verify(teacherRepository, never())
+              .findById(any());
+      // ↑ If course not found, we stop immediately
+      //   We never even check for the teacher!
+   }
+
+   @Test
+   @DisplayName("Should throw exception when teacher not found for assignment")
+   void shouldThrowExceptionWhenTeacherNotFoundForAssignment() {
+
+      // ARRANGE
+      when(courseRepository.findById(1L))
+              .thenReturn(Optional.of(math));
+      // ↑ Course EXISTS
+
+      when(teacherRepository.findById(999L))
+              .thenReturn(Optional.empty());
+      // ↑ Teacher does NOT exist
+
+      // ACT & ASSERT
+      assertThatThrownBy(() ->
+              courseService.assignTeacherToCourse(1L, 999L)
+      )
+              .isInstanceOf(RuntimeException.class)
+              .hasMessageContaining("999");
+
+      // VERIFY course was NOT saved (we stopped before save!)
+      verify(courseRepository, never())
+              .save(any(Course.class));
+   }
+
+   @Test
+   @DisplayName("Should delete course when it exists")
+   void shouldDeleteCourseWhenExists() {
+
+      // ARRANGE
+      when(courseRepository.findById(1L))
+              .thenReturn(Optional.of(math));
+
+      doNothing().when(courseRepository).deleteById(1L);
+      // ↑ deleteById returns void
+      // ↑ doNothing() = "when called, do nothing"
+
+      // ACT
+      courseService.deleteCourse(1L);
+
+      // ASSERT
+      // No return value to check,
+      // but VERIFY methods were called correctly!
+      verify(courseRepository, times(1)).findById(1L);
+      verify(courseRepository, times(1)).deleteById(1L);
+   }
+
+   @Test
+   @DisplayName("Should throw exception when deleting non-existing course")
+   void shouldThrowExceptionWhenDeletingNonExistingCourse() {
+
+      // ARRANGE
+      when(courseRepository.findById(999L))
+              .thenReturn(Optional.empty());
+
+      // ACT & ASSERT
+      assertThatThrownBy(() ->
+              courseService.deleteCourse(999L)
+      )
+              .isInstanceOf(RuntimeException.class)
+              .hasMessageContaining("999");
+
+      // VERIFY deleteById was NEVER called!
+      verify(courseRepository, never()).deleteById(any());
+      // ↑ If course not found, we should NEVER delete!
    }
 }
