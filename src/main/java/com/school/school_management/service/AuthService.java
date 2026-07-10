@@ -1,9 +1,10 @@
 package com.school.school_management.service;
 
-import com.school.school_management.dto.AuthResponse;
-import com.school.school_management.dto.LoginRequest;
-import com.school.school_management.dto.RegisterRequest;
-import com.school.school_management.jwt.JwtUtil;
+import com.school.school_management.dto.response.AuthResponse;
+import com.school.school_management.dto.request.LoginRequest;
+import com.school.school_management.dto.request.RegisterRequest;
+import com.school.school_management.security.CustomUserDetailsService;
+import com.school.school_management.security.JwtUtil;
 import com.school.school_management.model.Role;
 import com.school.school_management.model.User;
 import com.school.school_management.repo.UserRepository;

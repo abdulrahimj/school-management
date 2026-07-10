@@ -1,4 +1,4 @@
-package com.school.school_management.jwt;
+package com.school.school_management.security;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

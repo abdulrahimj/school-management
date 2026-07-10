@@ -1,4 +1,4 @@
-package com.school.school_management.service;
+package com.school.school_management.security;
 
 import com.school.school_management.model.User;
 import com.school.school_management.repo.UserRepository;

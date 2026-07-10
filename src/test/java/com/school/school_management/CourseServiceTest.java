@@ -1,6 +1,6 @@
 package com.school.school_management;
 
-import com.school.school_management.dto.PageResponse;
+import com.school.school_management.dto.response.PageResponse;
 import com.school.school_management.model.Course;
 import com.school.school_management.model.Student;
 import com.school.school_management.model.Teacher;

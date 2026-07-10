@@ -1,8 +1,8 @@
 package com.school.school_management;
 
 import tools.jackson.databind.ObjectMapper;
-import com.school.school_management.dto.LoginRequest;
-import com.school.school_management.dto.RegisterRequest;
+import com.school.school_management.dto.request.LoginRequest;
+import com.school.school_management.dto.request.RegisterRequest;
 import com.school.school_management.repo.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;

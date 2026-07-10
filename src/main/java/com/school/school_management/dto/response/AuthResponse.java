@@ -1,4 +1,4 @@
-package com.school.school_management.dto;
+package com.school.school_management.dto.response;
 
 public class AuthResponse {
 

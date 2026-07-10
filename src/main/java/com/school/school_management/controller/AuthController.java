@@ -1,11 +1,10 @@
 package com.school.school_management.controller;
 
-import com.school.school_management.dto.AuthResponse;
-import com.school.school_management.dto.LoginRequest;
-import com.school.school_management.dto.RegisterRequest;
+import com.school.school_management.dto.response.AuthResponse;
+import com.school.school_management.dto.request.LoginRequest;
+import com.school.school_management.dto.request.RegisterRequest;
 import com.school.school_management.service.AuthService;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 

@@ -1,6 +1,5 @@
-package com.school.school_management.jwt;
+package com.school.school_management.security;
 
-import com.school.school_management.service.CustomUserDetailsService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

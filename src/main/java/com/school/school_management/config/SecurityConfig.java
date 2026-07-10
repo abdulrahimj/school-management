@@ -1,7 +1,7 @@
-package com.school.school_management.securityConfig;
+package com.school.school_management.config;
 
-import com.school.school_management.jwt.JwtAuthenticationFilter;
-import com.school.school_management.service.CustomUserDetailsService;
+import com.school.school_management.security.JwtAuthenticationFilter;
+import com.school.school_management.security.CustomUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
