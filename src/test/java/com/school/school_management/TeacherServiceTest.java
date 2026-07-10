@@ -1,6 +1,5 @@
 package com.school.school_management;
 
-import com.school.school_management.dto.response.PageResponse;
 import com.school.school_management.model.Course;
 import com.school.school_management.model.Teacher;
 import com.school.school_management.repo.TeacherRepository;
