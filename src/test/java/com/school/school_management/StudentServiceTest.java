@@ -1,6 +1,8 @@
 package com.school.school_management;
 
+import com.school.school_management.dto.request.StudentRequest;
 import com.school.school_management.dto.response.PageResponse;
+import com.school.school_management.dto.response.StudentResponse;
 import com.school.school_management.model.Student;
 import com.school.school_management.repo.StudentRepository;
 import com.school.school_management.service.StudentService;
@@ -53,7 +55,7 @@ public class StudentServiceTest {
               .thenReturn(studentPage);
 
       // ACT: Call the method we're testing
-      PageResponse<Student> result = studentService.getAllStudents(
+      PageResponse<StudentResponse> result = studentService.getAllStudents(
               0,
               10,
               "name",
@@ -62,8 +64,8 @@ public class StudentServiceTest {
 
       // ASSERT: Check the result is correct
       assertThat(result.content()).hasSize(2);
-      assertThat(result.content().get(0).getName()).isEqualTo("Alice");
-      assertThat(result.content().get(1).getName()).isEqualTo("Bob");
+      assertThat(result.content().get(0).name()).isEqualTo("Alice");
+      assertThat(result.content().get(1).name()).isEqualTo("Bob");
 
       // VERIFY: Was repository actually called?
       verify(studentRepository, times(1)).findAll(any(Pageable.class));
@@ -79,13 +81,13 @@ public class StudentServiceTest {
               .thenReturn(Optional.of(alice));
 
       //ACT
-      Student result = studentService.getStudentById(1L);
+      StudentResponse result = studentService.getStudentById(1L);
 
       //ASSERT
       assertThat(result).isNotNull();
-      assertThat(result.getId()).isEqualTo(1L);
-      assertThat(result.getName()).isEqualTo("Alice");
-      assertThat(result.getEmail()).isEqualTo("alice@gmail.com");
+      assertThat(result.id()).isEqualTo(1L);
+      assertThat(result.name()).isEqualTo("Alice");
+      assertThat(result.email()).isEqualTo("alice@gmail.com");
    }
 
    //TEST: getStudentById -  NOT FOUND
@@ -110,25 +112,27 @@ public class StudentServiceTest {
    void shouldCreateStudentSuccessfully() {
 
       //ARRANGE
-      Student newStudent = new Student("Charlie", "charlie@gmail.com", 21);
+      StudentRequest request = new StudentRequest("Charlie", "charlie@gmail.com", 21);
+      Student savedStudent = new Student("Charlie", "charlie@gmail.com", 21);
+      savedStudent.setId(3L);
 
       //Email does not exist yet
       when(studentRepository.findByEmail("charlie@gmail.com"))
               .thenReturn(Optional.empty());
 
       //When save() is called, return the student with id
-      when(studentRepository.save(newStudent))
-              .thenReturn(newStudent);
+      when(studentRepository.save(any(Student.class)))
+              .thenReturn(savedStudent);
 
       //ACT
-      Student result = studentService.createStudent(newStudent);
+      StudentResponse result = studentService.createStudent(request);
 
       //ASSERT
       assertThat(result).isNotNull();
-      assertThat(result.getName()).isEqualTo("Charlie");
+      assertThat(result.name()).isEqualTo("Charlie");
 
       //VERIFY
-      verify(studentRepository, times(1)).save(newStudent);
+      verify(studentRepository, times(1)).save(any(Student.class));
    }
 
    //TEST: createStudent - Duplicate Email
@@ -137,14 +141,14 @@ public class StudentServiceTest {
    void shouldThrowExceptionWhenEmailAlreadyExists() {
 
       //ARRANGE
-      Student duplicate = new Student("Alice Copy", "alice@gmail.com", 25);
+      StudentRequest duplicateRequest = new StudentRequest("Alice Copy", "alice@gmail.com", 25);
 
       //Email already exists
       when(studentRepository.findByEmail("alice@gmail.com"))
               .thenReturn(Optional.of(alice));
 
       //ACT & ASSERT
-      assertThatThrownBy(() -> studentService.createStudent(duplicate))
+      assertThatThrownBy(() -> studentService.createStudent(duplicateRequest))
               .isInstanceOf(RuntimeException.class)
               .hasMessageContaining("alice@gmail.com");
 
@@ -177,7 +181,7 @@ public class StudentServiceTest {
    void shouldUpdateStudentSuccessfully() {
 
       //ARRANGE
-      Student updatedData = new Student(
+      StudentRequest updateRequest = new StudentRequest(
               "Alice Updated",
               "alice.new@gmail.com",
               21
@@ -193,11 +197,11 @@ public class StudentServiceTest {
       //When save() is called with any student, return that same student
 
       //ACT
-      Student result = studentService.updateStudent(1L, updatedData);
+      StudentResponse result = studentService.updateStudent(1L, updateRequest);
 
       //ASSERT
-      assertThat(result.getName()).isEqualTo("Alice Updated");
-      assertThat(result.getEmail()).isEqualTo("alice.new@gmail.com");
-      assertThat(result.getAge()).isEqualTo(21);
+      assertThat(result.name()).isEqualTo("Alice Updated");
+      assertThat(result.email()).isEqualTo("alice.new@gmail.com");
+      assertThat(result.age()).isEqualTo(21);
    }
 }

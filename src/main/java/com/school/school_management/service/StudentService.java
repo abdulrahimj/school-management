@@ -1,9 +1,13 @@
 package com.school.school_management.service;
 
+import com.school.school_management.dto.request.StudentRequest;
 import com.school.school_management.dto.response.PageResponse;
+import com.school.school_management.dto.response.StudentResponse;
 import com.school.school_management.model.Address;
 import com.school.school_management.model.Student;
 import com.school.school_management.repo.StudentRepository;
+import jakarta.validation.Valid;
+import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -21,7 +25,7 @@ public class StudentService {
    }
 
    //Get all students (with pagination + sorting)
-   public PageResponse<Student> getAllStudents(
+   public PageResponse<StudentResponse> getAllStudents(
            int pageNumber,
            int pageSize,
            String sortBy,
@@ -46,7 +50,7 @@ public class StudentService {
    }
    
    //search students by name (with pagination)
-   public PageResponse<Student> searchStudentsByName(
+   public PageResponse<StudentResponse> searchStudentsByName(
            String name,
            int pageNumber,
            int pageSize,
@@ -64,7 +68,7 @@ public class StudentService {
    }
    
    //search students older than (with pagination)
-   public PageResponse<Student> getStudentsOlderThan(
+   public PageResponse<StudentResponse> getStudentsOlderThan(
            int age,
            int pageNumber,
            int pageSize) {
@@ -83,10 +87,10 @@ public class StudentService {
    // -------------------------------------
    // helper: build PageResponse from page
    // ------------------------------------
-   private PageResponse<Student> buildPageResponse(Page<Student> page) {
+   private PageResponse<StudentResponse> buildPageResponse(Page<Student> page) {
       
       return new PageResponse<>(
-              page.getContent(), //list of students
+              page.getContent().stream().map(this::mapToResponse).toList(), //list of students
               page.getNumber(), //current page number
               page.getSize(), //page size
               page.getTotalElements(), //total students in DB
@@ -96,27 +100,33 @@ public class StudentService {
       );
    }
    
-   public Student getStudentById(Long id) {
+   private Student findStudentById(Long id) {
       return studentRepository.findById(id)
               .orElseThrow(() -> new RuntimeException(
                       "Student with ID " + id + " not found"
               ));
    }
 
-   public Student createStudent(Student student) {
+   public StudentResponse getStudentById(Long id) {
+      return mapToResponse(findStudentById(id));
+   }
+
+   public StudentResponse createStudent(StudentRequest request) {
       //Check duplicate email
-      if (studentRepository.findByEmail(student.getEmail()).isPresent()) {
+      if (studentRepository.findByEmail(request.email()).isPresent()) {
          throw new RuntimeException(
-                 "Email " + student.getEmail() + " already exists"
+                 "Email " + request.email() + " already exists"
          );
       }
-      return studentRepository.save(student);
+      Student student = new Student(request.name(), request.email(), request.age());
+      Student savedStudent = studentRepository.save(student);
+      return mapToResponse(savedStudent);
    }
 
    //Add address to existing student
    public Student addAddressToStudent(Long studentId, Address address) {
       //find the student
-      Student student = getStudentById(studentId);
+      Student student = findStudentById(studentId);
 
       //Link address to student
       address.setStudent(student);
@@ -128,16 +138,26 @@ public class StudentService {
       return studentRepository.save(student);
    }
 
-   public Student updateStudent(Long id, Student updatedStudent) {
-      Student existing = getStudentById(id);
-      existing.setName(updatedStudent.getName());
-      existing.setEmail(updatedStudent.getEmail());
-      existing.setAge(updatedStudent.getAge());
-      return studentRepository.save(existing);
+   public StudentResponse updateStudent(Long id, StudentRequest updatedStudent) {
+      Student existing = findStudentById(id);
+      existing.setName(updatedStudent.name());
+      existing.setEmail(updatedStudent.email());
+      existing.setAge(updatedStudent.age());
+      Student savedStudent = studentRepository.save(existing);
+      return mapToResponse(savedStudent);
    }
 
    public void deleteStudent(Long id) {
-      getStudentById(id);
+      findStudentById(id);
       studentRepository.deleteById(id);
+   }
+
+   private StudentResponse mapToResponse(Student student) {
+      return new StudentResponse(
+              student.getId(),
+              student.getName(),
+              student.getEmail(),
+              student.getAge()
+      );
    }
 }
