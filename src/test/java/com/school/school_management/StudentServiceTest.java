@@ -1,5 +1,6 @@
 package com.school.school_management;
 
+import com.school.school_management.dto.response.PageResponse;
 import com.school.school_management.model.Student;
 import com.school.school_management.repo.StudentRepository;
 import com.school.school_management.service.StudentService;
@@ -60,9 +61,9 @@ public class StudentServiceTest {
       );
 
       // ASSERT: Check the result is correct
-      assertThat(result.getContent()).hasSize(2);
-      assertThat(result.getContent().get(0).getName()).isEqualTo("Alice");
-      assertThat(result.getContent().get(1).getName()).isEqualTo("Bob");
+      assertThat(result.content()).hasSize(2);
+      assertThat(result.content().get(0).getName()).isEqualTo("Alice");
+      assertThat(result.content().get(1).getName()).isEqualTo("Bob");
 
       // VERIFY: Was repository actually called?
       verify(studentRepository, times(1)).findAll(any(Pageable.class));

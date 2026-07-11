@@ -1,5 +1,6 @@
 package com.school.school_management;
 
+import com.school.school_management.dto.response.PageResponse;
 import com.school.school_management.model.Course;
 import com.school.school_management.model.Teacher;
 import com.school.school_management.repo.TeacherRepository;
@@ -69,10 +70,10 @@ public class TeacherServiceTest {
 
       //assert
       assertThat(result).isNotNull();
-      assertThat(result.getContent()).hasSize(2);
-      assertThat(result.getContent().get(0).getName())
+      assertThat(result.content()).hasSize(2);
+      assertThat(result.content().get(0).getName())
               .isEqualTo("Dr. Smith");
-      assertThat(result.getContent().get(1).getName())
+      assertThat(result.content().get(1).getName())
               .isEqualTo("Prof. Johnson");
 
       //verify
@@ -93,7 +94,7 @@ public class TeacherServiceTest {
 
       // ASSERT
       assertThat(result).isNotNull();
-      assertThat(result.getContent()).isEmpty();
+      assertThat(result.content()).isEmpty();
 
       verify(teacherRepository, times(1)).findAll(any(Pageable.class));
    }

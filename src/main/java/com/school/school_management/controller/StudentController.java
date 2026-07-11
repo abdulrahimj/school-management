@@ -1,5 +1,6 @@
 package com.school.school_management.controller;
 
+import com.school.school_management.dto.response.PageResponse;
 import com.school.school_management.model.Address;
 import com.school.school_management.model.Student;
 import com.school.school_management.service.StudentService;
@@ -78,8 +79,7 @@ public class StudentController {
    //POST /api/students
    @PostMapping
    @ResponseStatus(HttpStatus.CREATED)
-   public Student createStudent(@RequestBody Student student) {
-
+   public Student createStudent(@Valid @RequestBody Student student) {
       return studentService.createStudent(student);
    }
 

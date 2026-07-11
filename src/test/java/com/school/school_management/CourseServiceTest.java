@@ -1,5 +1,6 @@
 package com.school.school_management;
 
+import com.school.school_management.dto.response.PageResponse;
 import com.school.school_management.model.Course;
 import com.school.school_management.model.Student;
 import com.school.school_management.model.Teacher;
@@ -76,7 +77,7 @@ public class CourseServiceTest {
 
       //act - call the real method
       PageResponse<Course> response = courseService.getAllCourses(0, 10, "id", "asc");
-      List<Course> result = response.getContent();
+      List<Course> result = response.content();
 
       //assert - check the results
       assertThat(result).isNotNull();
@@ -101,7 +102,7 @@ public class CourseServiceTest {
 
       //act
       PageResponse<Course> response = courseService.getAllCourses(0, 10, "id", "asc");
-      List<Course> result = response.getContent();
+      List<Course> result = response.content();
 
       //assert
       assertThat(result).isNotNull();
