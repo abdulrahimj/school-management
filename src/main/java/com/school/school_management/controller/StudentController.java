@@ -150,7 +150,9 @@ public class StudentController {
 
    //POST /api/students/1/address -> Add address to student
    @PostMapping("/{id}/address")
-   @Operation(summary = "Add address to student", description = "Adds or updates the address for a student. ADMIN only")
+   @Operation(
+           summary = "Add address to student",
+           description = "Adds or updates the address for a student. ADMIN only")
    @ApiResponses({
            @ApiResponse(responseCode = "200", description = "Address added successfully"),
            @ApiResponse(responseCode = "404", description = "Student not found"),
