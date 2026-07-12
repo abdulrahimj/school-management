@@ -45,8 +45,22 @@ public class StudentService {
       //get page from repository
       Page<Student> page = studentRepository.findAll(pageable);
 
+      //convert each student entity to studentResponseDTO
+      List<StudentResponse> content = page.getContent()
+              .stream()
+              .map(this::mapToResponse)
+              .toList();
+
       //build our clean response
-      return buildPageResponse(page);
+      return new PageResponse<>(
+              content,
+              page.getNumber(),
+              page.getSize(),
+              page.getTotalElements(),
+              page.getTotalPages(),
+              page.isLast(),
+              page.isFirst()
+      );
    }
    
    //search students by name (with pagination)
@@ -99,7 +113,8 @@ public class StudentService {
               page.isFirst() //is this first page?
       );
    }
-   
+
+   //Private Helper - Find student or throw exception
    private Student findStudentById(Long id) {
       return studentRepository.findById(id)
               .orElseThrow(() -> new RuntimeException(
@@ -108,7 +123,8 @@ public class StudentService {
    }
 
    public StudentResponse getStudentById(Long id) {
-      return mapToResponse(findStudentById(id));
+      Student student = findStudentById(id);
+      return mapToResponse(student);
    }
 
    public StudentResponse createStudent(StudentRequest request) {
@@ -119,8 +135,8 @@ public class StudentService {
          );
       }
       Student student = new Student(request.name(), request.email(), request.age());
-      Student savedStudent = studentRepository.save(student);
-      return mapToResponse(savedStudent);
+      Student saved = studentRepository.save(student);
+      return mapToResponse(saved);
    }
 
    //Add address to existing student
@@ -138,13 +154,13 @@ public class StudentService {
       return studentRepository.save(student);
    }
 
-   public StudentResponse updateStudent(Long id, StudentRequest updatedStudent) {
+   public StudentResponse updateStudent(Long id, StudentRequest request) {
       Student existing = findStudentById(id);
-      existing.setName(updatedStudent.name());
-      existing.setEmail(updatedStudent.email());
-      existing.setAge(updatedStudent.age());
-      Student savedStudent = studentRepository.save(existing);
-      return mapToResponse(savedStudent);
+      existing.setName(request.name());
+      existing.setEmail(request.email());
+      existing.setAge(request.age());
+      Student updatedStudent = studentRepository.save(existing);
+      return mapToResponse(updatedStudent);
    }
 
    public void deleteStudent(Long id) {
@@ -152,6 +168,7 @@ public class StudentService {
       studentRepository.deleteById(id);
    }
 
+   //Convert entity to Response DTO
    private StudentResponse mapToResponse(Student student) {
       return new StudentResponse(
               student.getId(),
