@@ -76,12 +76,16 @@ public class StudentController {
    public PageResponse<StudentResponse> searchStudents(
            @Parameter(description = "Name to search for")
            @RequestParam String name,
+
            @Parameter(description = "Page number")
            @RequestParam(defaultValue = "0") int page,
+
            @Parameter(description = "Page size")
            @RequestParam(defaultValue = "10") int size,
+
            @Parameter(description = "Sort by field")
            @RequestParam(defaultValue = "name") String sortBy,
+
            @Parameter(description = "Sort direction")
            @RequestParam(defaultValue = "asc") String sortDir
    ) {

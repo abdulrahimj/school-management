@@ -1,5 +1,7 @@
 package com.school.school_management;
 
+import com.school.school_management.dto.request.CourseRequest;
+import com.school.school_management.dto.response.CourseResponse;
 import com.school.school_management.dto.response.PageResponse;
 import com.school.school_management.model.Course;
 import com.school.school_management.model.Student;
@@ -76,15 +78,15 @@ public class CourseServiceTest {
               .thenReturn(page);
 
       //act - call the real method
-      PageResponse<Course> response = courseService.getAllCourses(0, 10, "id", "asc");
-      List<Course> result = response.content();
+      PageResponse<CourseResponse> response = courseService.getAllCourses(0, 10, "id", "asc");
+      List<CourseResponse> result = response.content();
 
       //assert - check the results
       assertThat(result).isNotNull();
       assertThat(result).hasSize(2);
-      assertThat(result.get(0).getName())
+      assertThat(result.get(0).name())
               .isEqualTo("Mathematics");
-      assertThat(result.get(1).getName())
+      assertThat(result.get(1).name())
               .isEqualTo("Science");
 
       //verify repo was called exactly once
@@ -101,8 +103,8 @@ public class CourseServiceTest {
               .thenReturn(page);
 
       //act
-      PageResponse<Course> response = courseService.getAllCourses(0, 10, "id", "asc");
-      List<Course> result = response.content();
+      PageResponse<CourseResponse> response = courseService.getAllCourses(0, 10, "id", "asc");
+      List<CourseResponse> result = response.content();
 
       //assert
       assertThat(result).isNotNull();
@@ -121,13 +123,13 @@ public class CourseServiceTest {
       //when someone asks for ID 1, return  math
 
       //ACT - call the actual method
-      Course result = courseService.getCourseById(1L);
+      CourseResponse result = courseService.getCourseById(1L);
 
       //ASSERT - confirm our result work exactly as expected
       assertThat(result).isNotNull();
-      assertThat(result.getId()).isEqualTo(1L);
-      assertThat(result.getName()).isEqualTo("Mathematics");
-      assertThat(result.getDescription())
+      assertThat(result.id()).isEqualTo(1L);
+      assertThat(result.name()).isEqualTo("Mathematics");
+      assertThat(result.description())
               .isEqualTo("Advanced Math");
    }
 
@@ -155,27 +157,27 @@ public class CourseServiceTest {
    void shouldCreateCourseSuccessfully() {
 
       // ARRANGE
-      Course newCourse = new Course("Art", "Creative Arts");
+      CourseRequest newCourse = new CourseRequest("Art", "Creative Arts");
 
       // Name does NOT exist yet
       when(courseRepository.findByName("Art"))
               .thenReturn(Optional.empty());
 
       // When save is called, return the course
-      when(courseRepository.save(newCourse))
-              .thenReturn(newCourse);
+      when(courseRepository.save(any(Course.class)))
+              .thenAnswer(invocation -> invocation.getArgument(0));
 
       // ACT
-      Course result = courseService.createCourse(newCourse);
+      CourseResponse result = courseService.createCourse(newCourse);
 
       // ASSERT
       assertThat(result).isNotNull();
-      assertThat(result.getName()).isEqualTo("Art");
-      assertThat(result.getDescription())
+      assertThat(result.name()).isEqualTo("Art");
+      assertThat(result.description())
               .isEqualTo("Creative Arts");
 
       // VERIFY save was called exactly once
-      verify(courseRepository, times(1)).save(newCourse);
+      verify(courseRepository, times(1)).save(any(Course.class));
    }
 
    @Test
@@ -183,7 +185,7 @@ public class CourseServiceTest {
    void shouldThrowExceptionWhenCourseNameExists() {
 
       // ARRANGE
-      Course duplicate = new Course(
+      CourseRequest duplicate = new CourseRequest(
               "Mathematics",  // ← Same name as "math"!
               "Another Math"
       );
@@ -223,13 +225,12 @@ public class CourseServiceTest {
       // ↑ "Return whatever was passed to save()"
 
       // ACT
-      Course result = courseService
+      CourseResponse result = courseService
               .assignTeacherToCourse(1L, 1L);
 
       // ASSERT
       assertThat(result).isNotNull();
-      assertThat(result.getTeacher()).isNotNull();
-      assertThat(result.getTeacher().getName())
+      assertThat(result.teacherName())
               .isEqualTo("Dr. Smith");
 
       // VERIFY save was called

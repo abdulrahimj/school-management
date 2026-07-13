@@ -1,6 +1,9 @@
 package com.school.school_management.service;
 
+import com.school.school_management.dto.request.TeacherRequest;
+import com.school.school_management.dto.response.CourseResponse;
 import com.school.school_management.dto.response.PageResponse;
+import com.school.school_management.dto.response.TeacherResponse;
 import com.school.school_management.model.Course;
 import com.school.school_management.model.Teacher;
 import com.school.school_management.repo.TeacherRepository;
@@ -11,6 +14,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class TeacherService {
@@ -22,7 +26,7 @@ public class TeacherService {
    }
 
    //Get all teachers
-   public PageResponse<Teacher> getAllTeachers(
+   public PageResponse<TeacherResponse> getAllTeachers(
            int pageNum,
            int pageSize,
            String sortBy,
@@ -40,9 +44,9 @@ public class TeacherService {
    }
 
    //HELPER: build page response
-   public PageResponse<Teacher> buildPageResponse(Page<Teacher> page) {
+   public PageResponse<TeacherResponse> buildPageResponse(Page<Teacher> page) {
       return new PageResponse<>(
-        page.getContent(),
+        page.getContent().stream().map(this::mapToResponse).toList(),
         page.getNumber(),
         page.getSize(),
         page.getTotalElements(),
@@ -52,44 +56,75 @@ public class TeacherService {
       );
    }
 
-   //Get one teacher by ID
-   public Teacher getTeacherById(Long id) {
+   //Private Helper - find teacher entity or throw exception
+   private Teacher findTeacherById(Long id) {
       return teacherRepository.findById(id)
               .orElseThrow(() -> new RuntimeException(
                       "Teacher with ID " + id + " not found"
               ));
    }
 
+   //Get one teacher by ID
+   public TeacherResponse getTeacherById(Long id) {
+      return mapToResponse(findTeacherById(id));
+   }
+
    //Create a teacher
-   public Teacher createTeacher(Teacher teacher) {
+   public TeacherResponse createTeacher(TeacherRequest request) {
       //Check if teacher is already in the system
-      if (teacherRepository.findByEmail(teacher.getEmail()).isPresent()) {
-         throw new RuntimeException("Teacher with email " + teacher.getEmail() + " already exists");
+      if (teacherRepository.findByEmail(request.email()).isPresent()) {
+         throw new RuntimeException("Teacher with email " + request.email() + " already exists");
       }
-      return teacherRepository.save(teacher);
+      Teacher teacher = new Teacher(request.name(), request.email(), request.specialization());
+      Teacher saved = teacherRepository.save(teacher);
+      return mapToResponse(saved);
    }
 
    //Update teacher's info
-   public Teacher updateTeacher(Teacher updatedTeacher, Long id) {
-      Teacher existingTeacher = getTeacherById(id);
-      existingTeacher.setName(updatedTeacher.getName());
-      existingTeacher.setEmail(updatedTeacher.getEmail());
-      existingTeacher.setSpecialization(updatedTeacher.getSpecialization());
-      return teacherRepository.save(existingTeacher);
+   public TeacherResponse updateTeacher(TeacherRequest request, Long id) {
+      Teacher existingTeacher = findTeacherById(id);
+      existingTeacher.setName(request.name());
+      existingTeacher.setEmail(request.email());
+      existingTeacher.setSpecialization(request.specialization());
+      return mapToResponse(teacherRepository.save(existingTeacher));
    }
 
    //Delete teacher
    public void deleteTeacher(Long id) {
-      getTeacherById(id);
+      findTeacherById(id);
       teacherRepository.deleteById(id);
    }
 
    //Get all courses taught by teacher
-   public Set<Course> getCoursesByTeacher(Long teacherId) {
+   public Set<CourseResponse> getCoursesByTeacher(Long teacherId) {
 
       //check if teacher exists
-      Teacher teacher = getTeacherById(teacherId);
+      Teacher teacher = findTeacherById(teacherId);
 
-      return teacher.getCourses();
+      return teacher.getCourses()
+              .stream()
+              .map(this::mapToCourseResponse)
+              .collect(Collectors.toSet());
+   }
+
+   //Convert Teacher entity to TeacherResponse DTO
+   private TeacherResponse mapToResponse(Teacher teacher) {
+      return new TeacherResponse(
+              teacher.getId(),
+              teacher.getName(),
+              teacher.getEmail(),
+              teacher.getSpecialization(),
+              teacher.getCourses() != null ? teacher.getCourses().size() : 0
+      );
+   }
+
+   //Convert Course entity to CourseResponse DTO
+   private CourseResponse mapToCourseResponse(Course course) {
+      return new CourseResponse(
+              course.getId(),
+              course.getName(),
+              course.getDescription(),
+              course.getTeacher() != null ? course.getTeacher().getName() : null
+      );
    }
 }

@@ -1,6 +1,9 @@
 package com.school.school_management.service;
 
+import com.school.school_management.dto.request.CourseRequest;
+import com.school.school_management.dto.response.CourseResponse;
 import com.school.school_management.dto.response.PageResponse;
+import com.school.school_management.dto.response.StudentResponse;
 import com.school.school_management.model.Course;
 import com.school.school_management.repo.CourseRepository;
 import com.school.school_management.model.Student;
@@ -14,6 +17,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class CourseService {
@@ -32,7 +36,7 @@ public class CourseService {
    }
 
    //Get all courses with pagination and sorting
-   public PageResponse<Course> getAllCourses(
+   public PageResponse<CourseResponse> getAllCourses(
            int pageNum,
            int size,
            String sortBy,
@@ -50,7 +54,7 @@ public class CourseService {
       return buildPageResponse(page);
    }
 
-   public PageResponse<Course> searchCoursesByName(
+   public PageResponse<CourseResponse> searchCoursesByName(
            String name,
            int pageNum,
            int pageSize,
@@ -70,9 +74,9 @@ public class CourseService {
    }
 
    //HELPER: build pageResponse
-   public PageResponse<Course> buildPageResponse(Page<Course> page) {
+   public PageResponse<CourseResponse> buildPageResponse(Page<Course> page) {
       return new PageResponse<>(
-              page.getContent(),
+              page.getContent().stream().map(this::mapToResponse).toList(),
               page.getNumber(),
               page.getSize(),
               page.getTotalElements(),
@@ -82,18 +86,25 @@ public class CourseService {
       );
    }
 
-   //Get course by ID
-   public Course getCourseById(Long id) {
+   //Private Helper - find course entity or throw exception
+   private Course findCourseById(Long id) {
       return courseRepository.findById(id)
               .orElseThrow(() -> new RuntimeException("Course with ID " + id + " not found"));
    }
 
+   //Get course by ID
+   public CourseResponse getCourseById(Long id) {
+      return mapToResponse(findCourseById(id));
+   }
+
    //Create a new course
-   public Course createCourse(Course course) {
-      if (courseRepository.findByName(course.getName()).isPresent()) {
-         throw new RuntimeException("Course " + course.getName() + " already exists");
+   public CourseResponse createCourse(CourseRequest request) {
+      if (courseRepository.findByName(request.name()).isPresent()) {
+         throw new RuntimeException("Course " + request.name() + " already exists");
       }
-      return courseRepository.save(course);
+      Course course = new Course(request.name(), request.description());
+      Course saved = courseRepository.save(course);
+      return mapToResponse(saved);
    }
 
    //Enroll student in course
@@ -106,7 +117,7 @@ public class CourseService {
               ));
 
       //Find course
-      Course course = getCourseById(courseId);
+      Course course = findCourseById(courseId);
 
       //Check if already enrolled
       if (student.getCourse().contains(course)) {
@@ -133,7 +144,7 @@ public class CourseService {
                       "Student with ID " + studentId + " not found"
               ));
 
-      Course course = getCourseById(courseId);
+      Course course = findCourseById(courseId);
 
       //Remove course from student
       student.getCourse().remove(course);
@@ -145,14 +156,17 @@ public class CourseService {
    }
 
    //Get all students in a course
-   public Set<Student> getStudentsInCourse(Long courseId) {
-      Course course = getCourseById(courseId);
-      return course.getStudents();
+   public Set<StudentResponse> getStudentsInCourse(Long courseId) {
+      Course course = findCourseById(courseId);
+      return course.getStudents()
+              .stream()
+              .map(this::mapToStudentResponse)
+              .collect(Collectors.toSet());
    }
 
    //Delete course
    public void deleteCourse(Long courseId) {
-      Course course = getCourseById(courseId);
+      Course course = findCourseById(courseId);
 
       for (Student student : course.getStudents()) {
          student.getCourse().remove(course);
@@ -163,9 +177,9 @@ public class CourseService {
    }
 
    //Assign teacher to course
-   public Course assignTeacherToCourse(Long courseId, Long teacherId) {
+   public CourseResponse assignTeacherToCourse(Long courseId, Long teacherId) {
       //find course
-      Course course = getCourseById(courseId);
+      Course course = findCourseById(courseId);
 
       //find teacher
       Teacher teacher = teacherRepository.findById(teacherId)
@@ -177,6 +191,26 @@ public class CourseService {
       course.setTeacher(teacher);
 
       //save course
-      return courseRepository.save(course);
+      return mapToResponse(courseRepository.save(course));
+   }
+
+   //Convert Course entity to CourseResponse DTO
+   private CourseResponse mapToResponse(Course course) {
+      return new CourseResponse(
+              course.getId(),
+              course.getName(),
+              course.getDescription(),
+              course.getTeacher() != null ? course.getTeacher().getName() : null
+      );
+   }
+
+   //Convert Student entity to StudentResponse DTO
+   private StudentResponse mapToStudentResponse(Student student) {
+      return new StudentResponse(
+              student.getId(),
+              student.getName(),
+              student.getEmail(),
+              student.getAge()
+      );
    }
 }

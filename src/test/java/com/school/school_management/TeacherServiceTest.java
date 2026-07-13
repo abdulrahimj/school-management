@@ -1,6 +1,9 @@
 package com.school.school_management;
 
+import com.school.school_management.dto.request.TeacherRequest;
+import com.school.school_management.dto.response.CourseResponse;
 import com.school.school_management.dto.response.PageResponse;
+import com.school.school_management.dto.response.TeacherResponse;
 import com.school.school_management.model.Course;
 import com.school.school_management.model.Teacher;
 import com.school.school_management.repo.TeacherRepository;
@@ -66,14 +69,14 @@ public class TeacherServiceTest {
               .thenReturn(page);
 
       //act
-      PageResponse<Teacher> result = teacherService.getAllTeachers(0, 10, "name", "asc");
+      PageResponse<TeacherResponse> result = teacherService.getAllTeachers(0, 10, "name", "asc");
 
       //assert
       assertThat(result).isNotNull();
       assertThat(result.content()).hasSize(2);
-      assertThat(result.content().get(0).getName())
+      assertThat(result.content().get(0).name())
               .isEqualTo("Dr. Smith");
-      assertThat(result.content().get(1).getName())
+      assertThat(result.content().get(1).name())
               .isEqualTo("Prof. Johnson");
 
       //verify
@@ -90,7 +93,7 @@ public class TeacherServiceTest {
               .thenReturn(page);
 
       // ACT
-      PageResponse<Teacher> result = teacherService.getAllTeachers(0, 10, "name", "asc");
+      PageResponse<TeacherResponse> result = teacherService.getAllTeachers(0, 10, "name", "asc");
 
       // ASSERT
       assertThat(result).isNotNull();
@@ -108,15 +111,15 @@ public class TeacherServiceTest {
               .thenReturn(Optional.of(drSmith));
 
       // ACT
-      Teacher result = teacherService.getTeacherById(1L);
+      TeacherResponse result = teacherService.getTeacherById(1L);
 
       // ASSERT
       assertThat(result).isNotNull();
-      assertThat(result.getId()).isEqualTo(1L);
-      assertThat(result.getName()).isEqualTo("Dr. Smith");
-      assertThat(result.getEmail())
+      assertThat(result.id()).isEqualTo(1L);
+      assertThat(result.name()).isEqualTo("Dr. Smith");
+      assertThat(result.email())
               .isEqualTo("smith@school.com");
-      assertThat(result.getSpecialization())
+      assertThat(result.specialization())
               .isEqualTo("Mathematics");
    }
 
@@ -143,27 +146,27 @@ public class TeacherServiceTest {
    void shouldCreateTeacherSuccessfully() {
 
       //arrange
-      Teacher newTeacher = new Teacher("Dr. Brown", "brown@school.com", "History");
+      TeacherRequest newTeacher = new TeacherRequest("Dr. Brown", "brown@school.com", "History");
 
       //email does not exist yet
       when(teacherRepository.findByEmail("brown@school.com"))
               .thenReturn(Optional.empty());
 
       //when save() is called, return the teacher
-      when(teacherRepository.save(newTeacher))
-              .thenReturn(newTeacher);
+      when(teacherRepository.save(any(Teacher.class)))
+              .thenAnswer(invocation -> invocation.getArgument(0));
 
       //act
-      Teacher result = teacherService.createTeacher(newTeacher);
+      TeacherResponse result = teacherService.createTeacher(newTeacher);
 
       //assert
       assertThat(result).isNotNull();
-      assertThat(result.getName()).isEqualTo("Dr. Brown");
-      assertThat(result.getEmail()).isEqualTo("brown@school.com");
-      assertThat(result.getSpecialization()).isEqualTo("History");
+      assertThat(result.name()).isEqualTo("Dr. Brown");
+      assertThat(result.email()).isEqualTo("brown@school.com");
+      assertThat(result.specialization()).isEqualTo("History");
 
       //verify
-      verify(teacherRepository, times(1)).save(newTeacher);
+      verify(teacherRepository, times(1)).save(any(Teacher.class));
    }
 
    @Test
@@ -171,7 +174,7 @@ public class TeacherServiceTest {
    void shouldThrowExceptionWhenEmailAlreadyExists() {
 
       // ARRANGE
-      Teacher duplicateEmail = new Teacher(
+      TeacherRequest duplicateEmail = new TeacherRequest(
               "Another Smith",
               "smith@school.com", // ← Same email as drSmith!
               "Physics"
@@ -202,14 +205,14 @@ public class TeacherServiceTest {
               .thenReturn(Optional.of(drSmith));
 
       // ACT
-      Set<Course> result =
+      Set<CourseResponse> result =
               teacherService.getCoursesByTeacher(1L);
 
       // ASSERT
       assertThat(result).isNotNull();
       assertThat(result).hasSize(2);
       assertThat(result)
-              .extracting(Course::getName)
+              .extracting(CourseResponse::name)
               // ↑ Extract just the names from each course
               .containsExactlyInAnyOrder(
                       "Mathematics",
@@ -230,7 +233,7 @@ public class TeacherServiceTest {
               .thenReturn(Optional.of(profJohnson));
 
       // ACT
-      Set<Course> result =
+      Set<CourseResponse> result =
               teacherService.getCoursesByTeacher(2L);
 
       // ASSERT
