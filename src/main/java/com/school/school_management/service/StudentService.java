@@ -8,6 +8,9 @@ import com.school.school_management.model.Student;
 import com.school.school_management.repo.StudentRepository;
 import jakarta.validation.Valid;
 import java.util.List;
+
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -15,6 +18,7 @@ import org.springframework.stereotype.Service;
 
 import org.springframework.data.domain.Pageable;
 
+@Slf4j
 @Service
 public class StudentService {
 
@@ -122,7 +126,9 @@ public class StudentService {
               ));
    }
 
+   @Cacheable(value = "students", key = "#id")
    public StudentResponse getStudentById(Long id) {
+      log.info("DATABASE HIT: Finding student {}", id);
       Student student = findStudentById(id);
       return mapToResponse(student);
    }
