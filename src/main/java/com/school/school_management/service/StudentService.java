@@ -10,6 +10,7 @@ import jakarta.validation.Valid;
 import java.util.List;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -160,7 +161,11 @@ public class StudentService {
       return studentRepository.save(student);
    }
 
+   @CacheEvict(value = "students", key = "#id")
    public StudentResponse updateStudent(Long id, StudentRequest request) {
+
+      log.info("UPDATING student {} - cache cleared!", id);
+
       Student existing = findStudentById(id);
       existing.setName(request.name());
       existing.setEmail(request.email());
