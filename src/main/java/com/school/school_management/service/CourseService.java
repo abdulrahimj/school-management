@@ -10,6 +10,9 @@ import com.school.school_management.model.Student;
 import com.school.school_management.repo.StudentRepository;
 import com.school.school_management.model.Teacher;
 import com.school.school_management.repo.TeacherRepository;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -20,6 +23,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
+@Slf4j
 public class CourseService {
 
    private final CourseRepository courseRepository;
@@ -93,15 +97,19 @@ public class CourseService {
    }
 
    //Get course by ID
+   @Cacheable(value = "courses", key = "#id")
    public CourseResponse getCourseById(Long id) {
+      log.info("FINDING course {} - cache created", id);
       return mapToResponse(findCourseById(id));
    }
 
    //Create a new course
+   @CacheEvict(value = "courses", allEntries = true)
    public CourseResponse createCourse(CourseRequest request) {
       if (courseRepository.findByName(request.name()).isPresent()) {
          throw new RuntimeException("Course " + request.name() + " already exists");
       }
+      log.info("CREATING course - cache cleared");
       Course course = new Course(request.name(), request.description());
       Course saved = courseRepository.save(course);
       return mapToResponse(saved);
@@ -165,8 +173,11 @@ public class CourseService {
    }
 
    //Delete course
+   @CacheEvict(value = "courses", key = "#id")
    public void deleteCourse(Long courseId) {
       Course course = findCourseById(courseId);
+
+      log.info("DELETING course {} - cache cleared", courseId);
 
       for (Student student : course.getStudents()) {
          student.getCourse().remove(course);
@@ -177,6 +188,7 @@ public class CourseService {
    }
 
    //Assign teacher to course
+   @CacheEvict(value = "courses", key = "#courseId")
    public CourseResponse assignTeacherToCourse(Long courseId, Long teacherId) {
       //find course
       Course course = findCourseById(courseId);
@@ -186,6 +198,8 @@ public class CourseService {
               .orElseThrow(() -> new RuntimeException(
                       "Teacher with ID " + teacherId + " not found"
               ));
+
+      log.info("ASSIGNING teacher {} to course {} - cache cleared", teacherId, courseId);
 
       //assign teacher to course
       course.setTeacher(teacher);

@@ -119,14 +119,6 @@ public class StudentService {
       );
    }
 
-   //Private Helper - Find student or throw exception
-   private Student findStudentById(Long id) {
-      return studentRepository.findById(id)
-              .orElseThrow(() -> new RuntimeException(
-                      "Student with ID " + id + " not found"
-              ));
-   }
-
    @Cacheable(value = "students", key = "#id")
    public StudentResponse getStudentById(Long id) {
       log.info("DATABASE HIT: Finding student {}", id);
@@ -185,6 +177,16 @@ public class StudentService {
       log.info("DELETING student {} - cache cleared", id);
       findStudentById(id);
       studentRepository.deleteById(id);
+   }
+
+   // -------------------------------------------------
+   //  PRIVATE HELPERS
+   // -------------------------------------------------
+   private Student findStudentById(Long id) {
+      return studentRepository.findById(id)
+              .orElseThrow(() -> new RuntimeException(
+                      "Student with ID " + id + " not found"
+              ));
    }
 
    //Convert entity to Response DTO
