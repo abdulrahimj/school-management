@@ -134,7 +134,12 @@ public class StudentService {
       return mapToResponse(student);
    }
 
+   //Clear DB and cache when a new student is created
+   @CacheEvict(value = "students", allEntries = true)
    public StudentResponse createStudent(StudentRequest request) {
+
+      log.info("CREATING student - All cache cleared");
+
       //Check duplicate email
       if (studentRepository.findByEmail(request.email()).isPresent()) {
          throw new RuntimeException(
@@ -174,7 +179,10 @@ public class StudentService {
       return mapToResponse(updatedStudent);
    }
 
+   //delete student from DB and cache
+   @CacheEvict(value = "students", key = "#id")
    public void deleteStudent(Long id) {
+      log.info("DELETING student {} - cache cleared", id);
       findStudentById(id);
       studentRepository.deleteById(id);
    }
