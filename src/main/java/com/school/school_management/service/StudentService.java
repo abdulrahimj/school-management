@@ -24,9 +24,14 @@ import org.springframework.data.domain.Pageable;
 public class StudentService {
 
    private final StudentRepository studentRepository;
+   private final NotificationService notificationService;
 
-   public StudentService(StudentRepository studentRepository) {
+   public StudentService(
+           StudentRepository studentRepository,
+           NotificationService notificationService) {
+
       this.studentRepository = studentRepository;
+      this.notificationService = notificationService;
    }
 
    //Get all students (with pagination + sorting)
@@ -138,8 +143,24 @@ public class StudentService {
                  "Email " + request.email() + " already exists"
          );
       }
-      Student student = new Student(request.name(), request.email(), request.age());
+
+      //create a new student
+      Student student = new Student(
+              request.name(),
+              request.email(),
+              request.age()
+      );
+
       Student saved = studentRepository.save(student);
+      System.out.println("Student saved to database");
+
+      //send welcome email (Not async yet)
+      notificationService.sendWelcomeEmail(
+              request.email(),
+              request.name()
+      );
+
+      System.out.println("Returning response to client");
       return mapToResponse(saved);
    }
 
