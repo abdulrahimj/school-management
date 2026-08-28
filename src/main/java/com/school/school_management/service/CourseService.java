@@ -29,14 +29,17 @@ public class CourseService {
    private final CourseRepository courseRepository;
    private final StudentRepository studentRepository;
    private final TeacherRepository teacherRepository;
+   private final NotificationService notificationService;
 
    public CourseService(
            CourseRepository courseRepository,
            StudentRepository studentRepository,
-           TeacherRepository teacherRepository) {
+           TeacherRepository teacherRepository,
+           NotificationService notificationService) {
       this.courseRepository = courseRepository;
       this.studentRepository = studentRepository;
       this.teacherRepository = teacherRepository;
+      this.notificationService = notificationService;
    }
 
    //Get all courses with pagination and sorting
@@ -139,6 +142,9 @@ public class CourseService {
 
       //Add student to course's students (both sides)
       course.getStudents().add(student);
+
+      //send enrollment notification
+      notificationService.sendEnrollmentNotification(student.getName(), course.getName());
 
       //Save (cascade handle the join table)
       return studentRepository.save(student);

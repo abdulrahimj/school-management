@@ -21,4 +21,17 @@ public class NotificationService {
 
       System.out.println("DONE! Welcome email sent to " + name + " at " + email);
    }
+
+   @Async
+   public void sendEnrollmentNotification(String studentName, String courseName) {
+      System.out.println("SENDING enrollment notification to " + studentName + " for " + courseName);
+
+      try {
+         Thread.sleep(3000);
+      } catch (InterruptedException e) {
+         Thread.currentThread().interrupt();
+      }
+
+      System.out.println("Notification sent!");
+   }
 }
