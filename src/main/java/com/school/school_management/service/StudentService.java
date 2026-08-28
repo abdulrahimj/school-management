@@ -6,10 +6,10 @@ import com.school.school_management.dto.response.StudentResponse;
 import com.school.school_management.model.Address;
 import com.school.school_management.model.Student;
 import com.school.school_management.repo.StudentRepository;
-import jakarta.validation.Valid;
 import java.util.List;
 
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
@@ -19,10 +19,10 @@ import org.springframework.stereotype.Service;
 
 import org.springframework.data.domain.Pageable;
 
-@Slf4j
 @Service
 public class StudentService {
 
+   private static final Logger log = LoggerFactory.getLogger(StudentService.class);
    private final StudentRepository studentRepository;
    private final NotificationService notificationService;
 
@@ -40,6 +40,8 @@ public class StudentService {
            int pageSize,
            String sortBy,
            String sortDirection) {
+
+      log.info("Fetching students page: {}, size: {}, sortBy: {}", pageNumber, pageSize, sortBy);
 
       //create sort object
       Sort sort = sortDirection.equalsIgnoreCase("asc")
@@ -135,10 +137,11 @@ public class StudentService {
    @CacheEvict(value = "students", allEntries = true)
    public StudentResponse createStudent(StudentRequest request) {
 
-      log.info("CREATING student - All cache cleared");
+      log.info("CREATING student with email: {} - All cache cleared", request.email());
 
       //Check duplicate email
       if (studentRepository.findByEmail(request.email()).isPresent()) {
+         log.warn("Student creation failed: email {} already exists", request.email());
          throw new RuntimeException(
                  "Email " + request.email() + " already exists"
          );
@@ -152,7 +155,7 @@ public class StudentService {
       );
 
       Student saved = studentRepository.save(student);
-      System.out.println("Student saved to database");
+      log.info("Student saved to successfully with ID: {}", saved.getId());
 
       //send welcome email (Not async yet)
       notificationService.sendWelcomeEmail(
@@ -160,7 +163,7 @@ public class StudentService {
               request.name()
       );
 
-      System.out.println("Returning response to client");
+      log.info("Returning response to client");
       return mapToResponse(saved);
    }
 
@@ -182,22 +185,25 @@ public class StudentService {
    @CacheEvict(value = "students", key = "#id")
    public StudentResponse updateStudent(Long id, StudentRequest request) {
 
-      log.info("UPDATING student {} - cache cleared!", id);
+      log.info("UPDATING student id: {} - cache cleared!", id);
 
       Student existing = findStudentById(id);
       existing.setName(request.name());
       existing.setEmail(request.email());
       existing.setAge(request.age());
+
       Student updatedStudent = studentRepository.save(existing);
+      log.info("Student id: {} updated successfully", updatedStudent.getId());
       return mapToResponse(updatedStudent);
    }
 
    //delete student from DB and cache
    @CacheEvict(value = "students", key = "#id")
    public void deleteStudent(Long id) {
-      log.info("DELETING student {} - cache cleared", id);
+      log.info("DELETING student with id: {} - cache cleared", id);
       findStudentById(id);
       studentRepository.deleteById(id);
+      log.info("Student with ID: {} deleted successfully", id);
    }
 
    // -------------------------------------------------
@@ -205,9 +211,10 @@ public class StudentService {
    // -------------------------------------------------
    private Student findStudentById(Long id) {
       return studentRepository.findById(id)
-              .orElseThrow(() -> new RuntimeException(
-                      "Student with ID " + id + " not found"
-              ));
+              .orElseThrow(() -> {
+                 log.error("Student lookup failed: ID {} not found", id);
+                 return new RuntimeException("Student with ID " + id + " not found");
+              });
    }
 
    //Convert entity to Response DTO
