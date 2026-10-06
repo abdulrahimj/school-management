@@ -64,6 +64,10 @@ public class SecurityConfig {
                               "/webjars/**"
                       ).permitAll()
 
+                      .requestMatchers("/actuator/health").permitAll()
+
+                      .requestMatchers("/actuator/**").hasRole("ADMIN")
+
                       .anyRequest().authenticated()
               )
 
