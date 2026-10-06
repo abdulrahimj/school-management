@@ -155,7 +155,7 @@ public class StudentService {
       );
 
       Student saved = studentRepository.save(student);
-      log.info("Student saved to successfully with ID: {}", saved.getId());
+      log.info("Student saved successfully with ID: {}", saved.getId());
 
       //send welcome email (Not async yet)
       notificationService.sendWelcomeEmail(

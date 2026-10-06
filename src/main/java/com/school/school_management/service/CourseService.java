@@ -49,6 +49,8 @@ public class CourseService {
            String sortBy,
            String sortDir) {
 
+      log.info("Fetching all courses");
+
       //create sort object
       Sort sort = sortDir.equalsIgnoreCase("asc")
               ? Sort.by(sortBy).ascending() : Sort.by(sortBy).descending();

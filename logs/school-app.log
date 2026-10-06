@@ -1,0 +1,2434 @@
+2026-10-06T02:18:55.381Z  INFO 16680 --- [school-management] [main] c.s.s.SchoolManagementApplication        : Starting SchoolManagementApplication using Java 25.0.2 with PID 16680 (H:\My Files\Learning Now\school-management\target\classes started by Abdulrahim Jalloh in H:\My Files\Learning Now\school-management)
+2026-10-06T02:18:55.390Z DEBUG 16680 --- [school-management] [main] c.s.s.SchoolManagementApplication        : Running with Spring Boot v4.0.5, Spring v7.0.6
+2026-10-06T02:18:55.392Z  INFO 16680 --- [school-management] [main] c.s.s.SchoolManagementApplication        : No active profile set, falling back to 1 default profile: "default"
+2026-10-06T02:18:57.285Z  INFO 16680 --- [school-management] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-06T02:18:57.395Z  INFO 16680 --- [school-management] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 89 ms. Found 5 JPA repository interfaces.
+2026-10-06T02:18:58.240Z  INFO 16680 --- [school-management] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-10-06T02:18:58.255Z  INFO 16680 --- [school-management] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-06T02:18:58.255Z  INFO 16680 --- [school-management] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.20]
+2026-10-06T02:18:58.342Z  INFO 16680 --- [school-management] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 2767 ms
+2026-10-06T02:18:58.580Z  INFO 16680 --- [school-management] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-10-06T02:18:58.660Z  INFO 16680 --- [school-management] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.7.Final
+2026-10-06T02:18:59.324Z  INFO 16680 --- [school-management] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-06T02:18:59.368Z  INFO 16680 --- [school-management] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-10-06T02:18:59.746Z  INFO 16680 --- [school-management] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@4b2acb12
+2026-10-06T02:18:59.748Z  INFO 16680 --- [school-management] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-10-06T02:18:59.816Z  WARN 16680 --- [school-management] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-10-06T02:18:59.864Z  INFO 16680 --- [school-management] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:5432/schoolmgn_db]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 18.1
+	Default catalog/schema: schoolmgn_db/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-10-06T02:19:03.510Z  INFO 16680 --- [school-management] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-10-06T02:19:03.756Z  INFO 16680 --- [school-management] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-06T02:19:03.835Z  INFO 16680 --- [school-management] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-10-06T02:19:04.114Z DEBUG 16680 --- [school-management] [main] c.s.s.security.JwtAuthenticationFilter   : Filter 'jwtAuthenticationFilter' configured for use
+2026-10-06T02:19:04.198Z  INFO 16680 --- [school-management] [main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2026-10-06T02:19:04.199Z  WARN 16680 --- [school-management] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2026-10-06T02:19:04.501Z  WARN 16680 --- [school-management] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-10-06T02:19:05.370Z  INFO 16680 --- [school-management] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-10-06T02:19:05.385Z  INFO 16680 --- [school-management] [main] c.s.s.SchoolManagementApplication        : Started SchoolManagementApplication in 10.932 seconds (process running for 12.427)
+2026-10-06T02:19:05.815Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:19:05.815Z DEBUG 16680 --- [school-management] [main] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:19:05.845Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T02:19:35.397Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:20:05.396Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:20:05.399Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T02:20:35.393Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:21:05.385Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:21:05.391Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T02:21:35.385Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:22:05.393Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:22:05.396Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T02:22:35.392Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:23:05.386Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:23:05.389Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T02:23:35.398Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:24:05.399Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:24:05.402Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T02:24:35.384Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:25:05.387Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:25:05.390Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T02:25:35.385Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:26:05.385Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:26:05.388Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T02:26:35.385Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:27:05.384Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:27:05.387Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T02:27:35.384Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:28:05.384Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:28:05.389Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T02:28:35.392Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:29:05.396Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:29:05.398Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T02:29:35.386Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:30:05.392Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:30:05.395Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T02:30:35.388Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:31:05.384Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:31:05.387Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T02:31:35.384Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:32:05.385Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:32:05.388Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T02:32:35.384Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:33:05.385Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:33:05.388Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T02:33:35.384Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:34:05.385Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:34:05.386Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T02:34:35.384Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:35:05.384Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:35:05.385Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T02:35:35.384Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:36:05.384Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:36:05.386Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T02:36:35.385Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:37:05.384Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:37:05.388Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T02:37:35.384Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:38:05.384Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:38:05.386Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T02:38:35.384Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:39:05.384Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:39:05.387Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T02:39:35.385Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:40:05.386Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:40:05.390Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T02:40:35.385Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:41:05.384Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:41:05.386Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T02:41:35.385Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:42:05.387Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:42:05.394Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T02:42:35.385Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:43:05.384Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:43:05.386Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T02:43:35.384Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:44:05.385Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:44:05.388Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T02:44:35.384Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:45:05.385Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:45:05.390Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T02:45:35.384Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:46:05.385Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:46:05.391Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T02:46:35.385Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:47:05.384Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:47:05.386Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T02:47:35.385Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:48:05.384Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:48:05.385Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T02:48:35.386Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:49:05.384Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:49:05.389Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T02:49:35.384Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:50:05.384Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:50:05.386Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T02:50:35.385Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:51:05.386Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:51:05.389Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T02:51:35.383Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:52:05.384Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:52:05.386Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T02:52:35.384Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:53:05.385Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:53:05.387Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T02:53:35.385Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:54:05.384Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:54:05.386Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T02:54:35.384Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:55:05.385Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:55:05.388Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T02:55:35.385Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:56:05.384Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:56:05.385Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T02:56:35.384Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:57:05.385Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:57:05.388Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T02:57:35.384Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:58:05.386Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:58:05.389Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T02:58:35.384Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:59:05.385Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T02:59:05.390Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T02:59:35.384Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:00:05.385Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:00:05.390Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T03:00:35.385Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:01:05.385Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:01:05.399Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T03:01:35.384Z DEBUG 16680 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:01:41.814Z  INFO 16680 --- [school-management] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-10-06T03:01:41.822Z  INFO 16680 --- [school-management] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-10-06T03:01:41.829Z  INFO 16680 --- [school-management] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-10-06T03:01:41.832Z  INFO 16680 --- [school-management] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-10-06T03:01:41.844Z  INFO 16680 --- [school-management] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-10-06T03:01:56.273Z  INFO 3236 --- [school-management] [main] c.s.s.SchoolManagementApplication        : Starting SchoolManagementApplication using Java 25.0.2 with PID 3236 (H:\My Files\Learning Now\school-management\target\classes started by Abdulrahim Jalloh in H:\My Files\Learning Now\school-management)
+2026-10-06T03:01:56.278Z DEBUG 3236 --- [school-management] [main] c.s.s.SchoolManagementApplication        : Running with Spring Boot v4.0.5, Spring v7.0.6
+2026-10-06T03:01:56.281Z  INFO 3236 --- [school-management] [main] c.s.s.SchoolManagementApplication        : No active profile set, falling back to 1 default profile: "default"
+2026-10-06T03:01:58.444Z  INFO 3236 --- [school-management] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-06T03:01:58.553Z  INFO 3236 --- [school-management] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 93 ms. Found 5 JPA repository interfaces.
+2026-10-06T03:01:59.541Z  INFO 3236 --- [school-management] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-10-06T03:01:59.565Z  INFO 3236 --- [school-management] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-06T03:01:59.565Z  INFO 3236 --- [school-management] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.20]
+2026-10-06T03:01:59.675Z  INFO 3236 --- [school-management] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 3191 ms
+2026-10-06T03:01:59.947Z  INFO 3236 --- [school-management] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-10-06T03:02:00.038Z  INFO 3236 --- [school-management] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.7.Final
+2026-10-06T03:02:00.716Z  INFO 3236 --- [school-management] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-06T03:02:00.765Z  INFO 3236 --- [school-management] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-10-06T03:02:00.943Z  INFO 3236 --- [school-management] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@1bbb48dd
+2026-10-06T03:02:00.953Z  INFO 3236 --- [school-management] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-10-06T03:02:00.992Z  WARN 3236 --- [school-management] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-10-06T03:02:01.019Z  INFO 3236 --- [school-management] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:5432/schoolmgn_db]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 18.1
+	Default catalog/schema: schoolmgn_db/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-10-06T03:02:03.016Z  INFO 3236 --- [school-management] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-10-06T03:02:03.147Z  INFO 3236 --- [school-management] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-06T03:02:03.234Z  INFO 3236 --- [school-management] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-10-06T03:02:03.501Z DEBUG 3236 --- [school-management] [main] c.s.s.security.JwtAuthenticationFilter   : Filter 'jwtAuthenticationFilter' configured for use
+2026-10-06T03:02:03.612Z  INFO 3236 --- [school-management] [main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2026-10-06T03:02:03.613Z  WARN 3236 --- [school-management] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2026-10-06T03:02:04.081Z  WARN 3236 --- [school-management] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-10-06T03:02:05.072Z  INFO 3236 --- [school-management] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-10-06T03:02:05.087Z  INFO 3236 --- [school-management] [main] c.s.s.SchoolManagementApplication        : Started SchoolManagementApplication in 12.93 seconds (process running for 15.225)
+2026-10-06T03:02:05.439Z DEBUG 3236 --- [school-management] [main] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:02:05.439Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:02:05.465Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T03:02:35.090Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:03:05.097Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:03:05.103Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T03:03:35.087Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:04:05.087Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:04:05.089Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T03:04:35.087Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:04:42.089Z  INFO 3236 --- [school-management] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-10-06T03:04:42.090Z  INFO 3236 --- [school-management] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-10-06T03:04:42.100Z  INFO 3236 --- [school-management] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 10 ms
+2026-10-06T03:04:43.638Z  INFO 3236 --- [school-management] [http-nio-8080-exec-10] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 814 ms
+2026-10-06T03:05:05.087Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:05:05.090Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T03:05:35.090Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:06:05.088Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:06:05.090Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T03:06:35.088Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:07:05.088Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:07:05.093Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T03:07:35.089Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:08:05.087Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:08:05.089Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T03:08:35.087Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:09:05.087Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:09:05.090Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T03:09:35.087Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:10:05.087Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:10:05.089Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T03:10:35.088Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:10:55.158Z DEBUG 3236 --- [school-management] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-10-06T03:10:55.297Z DEBUG 3236 --- [school-management] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-10-06T03:10:55.408Z DEBUG 3236 --- [school-management] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-10-06T03:10:59.411Z DEBUG 3236 --- [school-management] [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-10-06T03:10:59.523Z DEBUG 3236 --- [school-management] [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-10-06T03:10:59.526Z DEBUG 3236 --- [school-management] [http-nio-8080-exec-7] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-10-06T03:11:05.087Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:11:05.090Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T03:11:35.087Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:12:05.088Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:12:05.090Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T03:12:35.087Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:12:50.054Z ERROR 3236 --- [school-management] [http-nio-8080-exec-8] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
+
+io.jsonwebtoken.MalformedJwtException: Compact JWT strings may not contain whitespace.
+	at io.jsonwebtoken.impl.JwtTokenizer.tokenize(JwtTokenizer.java:67) ~[jjwt-impl-0.13.0.jar:0.13.0]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:372) ~[jjwt-impl-0.13.0.jar:0.13.0]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:364) ~[jjwt-impl-0.13.0.jar:0.13.0]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:94) ~[jjwt-impl-0.13.0.jar:0.13.0]
+	at io.jsonwebtoken.impl.io.AbstractParser.parse(AbstractParser.java:36) ~[jjwt-impl-0.13.0.jar:0.13.0]
+	at io.jsonwebtoken.impl.io.AbstractParser.parse(AbstractParser.java:29) ~[jjwt-impl-0.13.0.jar:0.13.0]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parseSignedClaims(DefaultJwtParser.java:827) ~[jjwt-impl-0.13.0.jar:0.13.0]
+	at com.school.school_management.security.JwtUtil.extractClaims(JwtUtil.java:84) ~[classes/:na]
+	at com.school.school_management.security.JwtUtil.extractUsername(JwtUtil.java:54) ~[classes/:na]
+	at com.school.school_management.security.JwtAuthenticationFilter.doFilterInternal(JwtAuthenticationFilter.java:50) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:110) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:96) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:237) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:195) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.springframework.web.filter.ServletRequestPathFilter.doFilter(ServletRequestPathFilter.java:52) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebSecurityConfiguration.java:317) ~[spring-security-config-7.0.4.jar:7.0.4]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:355) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:272) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:199) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:77) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:492) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:83) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1779) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:946) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:480) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:57) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at java.base/java.lang.Thread.run(Thread.java:1474) ~[na:na]
+
+2026-10-06T03:13:05.089Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:13:05.094Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T03:13:35.086Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:13:41.029Z DEBUG 3236 --- [school-management] [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        u1_0.id 
+    from
+        users u1_0 
+    where
+        u1_0.username=? 
+    fetch
+        first ? rows only
+2026-10-06T03:13:42.819Z DEBUG 3236 --- [school-management] [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        u1_0.id 
+    from
+        users u1_0 
+    where
+        u1_0.username=? 
+    fetch
+        first ? rows only
+2026-10-06T03:14:05.089Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:14:05.091Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T03:14:35.088Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:15:05.086Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:15:05.088Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T03:15:35.087Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:15:38.438Z DEBUG 3236 --- [school-management] [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        u1_0.id 
+    from
+        users u1_0 
+    where
+        u1_0.username=? 
+    fetch
+        first ? rows only
+2026-10-06T03:15:38.444Z DEBUG 3236 --- [school-management] [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        u1_0.id 
+    from
+        users u1_0 
+    where
+        u1_0.email=? 
+    fetch
+        first ? rows only
+2026-10-06T03:15:38.583Z DEBUG 3236 --- [school-management] [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    insert 
+    into
+        users
+        (email, password, role, username) 
+    values
+        (?, ?, ?, ?)
+2026-10-06T03:15:38.612Z DEBUG 3236 --- [school-management] [http-nio-8080-exec-4] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-10-06T03:16:05.088Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:16:05.090Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T03:16:35.087Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:16:55.111Z DEBUG 3236 --- [school-management] [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-10-06T03:16:55.218Z DEBUG 3236 --- [school-management] [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-10-06T03:16:55.220Z DEBUG 3236 --- [school-management] [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-10-06T03:17:05.088Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:17:05.090Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T03:17:35.088Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:18:05.090Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:18:05.093Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T03:18:12.407Z ERROR 3236 --- [school-management] [http-nio-8080-exec-7] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
+
+io.jsonwebtoken.MalformedJwtException: Compact JWT strings may not contain whitespace.
+	at io.jsonwebtoken.impl.JwtTokenizer.tokenize(JwtTokenizer.java:67) ~[jjwt-impl-0.13.0.jar:0.13.0]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:372) ~[jjwt-impl-0.13.0.jar:0.13.0]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:364) ~[jjwt-impl-0.13.0.jar:0.13.0]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:94) ~[jjwt-impl-0.13.0.jar:0.13.0]
+	at io.jsonwebtoken.impl.io.AbstractParser.parse(AbstractParser.java:36) ~[jjwt-impl-0.13.0.jar:0.13.0]
+	at io.jsonwebtoken.impl.io.AbstractParser.parse(AbstractParser.java:29) ~[jjwt-impl-0.13.0.jar:0.13.0]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parseSignedClaims(DefaultJwtParser.java:827) ~[jjwt-impl-0.13.0.jar:0.13.0]
+	at com.school.school_management.security.JwtUtil.extractClaims(JwtUtil.java:84) ~[classes/:na]
+	at com.school.school_management.security.JwtUtil.extractUsername(JwtUtil.java:54) ~[classes/:na]
+	at com.school.school_management.security.JwtAuthenticationFilter.doFilterInternal(JwtAuthenticationFilter.java:50) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:110) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:96) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:237) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:195) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.springframework.web.filter.ServletRequestPathFilter.doFilter(ServletRequestPathFilter.java:52) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebSecurityConfiguration.java:317) ~[spring-security-config-7.0.4.jar:7.0.4]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:355) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:272) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:199) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:77) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:492) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:83) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1779) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:946) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:480) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:57) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at java.base/java.lang.Thread.run(Thread.java:1474) ~[na:na]
+
+2026-10-06T03:18:23.119Z ERROR 3236 --- [school-management] [http-nio-8080-exec-9] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
+
+io.jsonwebtoken.MalformedJwtException: Compact JWT strings may not contain whitespace.
+	at io.jsonwebtoken.impl.JwtTokenizer.tokenize(JwtTokenizer.java:67) ~[jjwt-impl-0.13.0.jar:0.13.0]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:372) ~[jjwt-impl-0.13.0.jar:0.13.0]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:364) ~[jjwt-impl-0.13.0.jar:0.13.0]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:94) ~[jjwt-impl-0.13.0.jar:0.13.0]
+	at io.jsonwebtoken.impl.io.AbstractParser.parse(AbstractParser.java:36) ~[jjwt-impl-0.13.0.jar:0.13.0]
+	at io.jsonwebtoken.impl.io.AbstractParser.parse(AbstractParser.java:29) ~[jjwt-impl-0.13.0.jar:0.13.0]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parseSignedClaims(DefaultJwtParser.java:827) ~[jjwt-impl-0.13.0.jar:0.13.0]
+	at com.school.school_management.security.JwtUtil.extractClaims(JwtUtil.java:84) ~[classes/:na]
+	at com.school.school_management.security.JwtUtil.extractUsername(JwtUtil.java:54) ~[classes/:na]
+	at com.school.school_management.security.JwtAuthenticationFilter.doFilterInternal(JwtAuthenticationFilter.java:50) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:110) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:96) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:237) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:195) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.springframework.web.filter.ServletRequestPathFilter.doFilter(ServletRequestPathFilter.java:52) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebSecurityConfiguration.java:317) ~[spring-security-config-7.0.4.jar:7.0.4]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:355) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:272) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:199) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:77) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:492) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:83) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1779) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:946) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:480) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:57) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at java.base/java.lang.Thread.run(Thread.java:1474) ~[na:na]
+
+2026-10-06T03:18:35.089Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:19:05.088Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:19:05.094Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T03:19:35.087Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:19:44.516Z DEBUG 3236 --- [school-management] [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-10-06T03:19:44.661Z DEBUG 3236 --- [school-management] [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-10-06T03:19:44.664Z DEBUG 3236 --- [school-management] [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-10-06T03:20:05.089Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:20:05.093Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T03:20:35.087Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:20:36.803Z ERROR 3236 --- [school-management] [http-nio-8080-exec-2] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception
+
+io.jsonwebtoken.MalformedJwtException: Compact JWT strings may not contain whitespace.
+	at io.jsonwebtoken.impl.JwtTokenizer.tokenize(JwtTokenizer.java:67) ~[jjwt-impl-0.13.0.jar:0.13.0]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:372) ~[jjwt-impl-0.13.0.jar:0.13.0]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:364) ~[jjwt-impl-0.13.0.jar:0.13.0]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parse(DefaultJwtParser.java:94) ~[jjwt-impl-0.13.0.jar:0.13.0]
+	at io.jsonwebtoken.impl.io.AbstractParser.parse(AbstractParser.java:36) ~[jjwt-impl-0.13.0.jar:0.13.0]
+	at io.jsonwebtoken.impl.io.AbstractParser.parse(AbstractParser.java:29) ~[jjwt-impl-0.13.0.jar:0.13.0]
+	at io.jsonwebtoken.impl.DefaultJwtParser.parseSignedClaims(DefaultJwtParser.java:827) ~[jjwt-impl-0.13.0.jar:0.13.0]
+	at com.school.school_management.security.JwtUtil.extractClaims(JwtUtil.java:84) ~[classes/:na]
+	at com.school.school_management.security.JwtUtil.extractUsername(JwtUtil.java:54) ~[classes/:na]
+	at com.school.school_management.security.JwtAuthenticationFilter.doFilterInternal(JwtAuthenticationFilter.java:50) ~[classes/:na]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:110) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:96) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:380) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:237) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:195) ~[spring-security-web-7.0.4.jar:7.0.4]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.springframework.web.filter.ServletRequestPathFilter.doFilter(ServletRequestPathFilter.java:52) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebSecurityConfiguration.java:317) ~[spring-security-config-7.0.4.jar:7.0.4]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:355) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:272) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:199) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116) ~[spring-web-7.0.6.jar:7.0.6]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:77) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:492) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:83) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1779) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:946) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:480) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:57) ~[tomcat-embed-core-11.0.20.jar:11.0.20]
+	at java.base/java.lang.Thread.run(Thread.java:1474) ~[na:na]
+
+2026-10-06T03:21:05.087Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:21:05.090Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T03:21:07.456Z DEBUG 3236 --- [school-management] [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-10-06T03:21:07.466Z  INFO 3236 --- [school-management] [http-nio-8080-exec-6] c.s.s.service.StudentService             : Fetching students page: 0, size: 10, sortBy: id
+2026-10-06T03:21:07.489Z DEBUG 3236 --- [school-management] [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        students s1_0 
+    order by
+        s1_0.id 
+    offset
+        ? rows 
+    fetch
+        first ? rows only
+2026-10-06T03:21:07.499Z DEBUG 3236 --- [school-management] [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        a1_0.id,
+        a1_0.city,
+        a1_0.country,
+        a1_0.street,
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        addresses a1_0 
+    left join
+        students s1_0 
+            on s1_0.id=a1_0.student_id 
+    where
+        a1_0.student_id=?
+2026-10-06T03:21:07.511Z DEBUG 3236 --- [school-management] [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        a1_0.id,
+        a1_0.city,
+        a1_0.country,
+        a1_0.street,
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        addresses a1_0 
+    left join
+        students s1_0 
+            on s1_0.id=a1_0.student_id 
+    where
+        a1_0.student_id=?
+2026-10-06T03:21:07.512Z DEBUG 3236 --- [school-management] [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        a1_0.id,
+        a1_0.city,
+        a1_0.country,
+        a1_0.street,
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        addresses a1_0 
+    left join
+        students s1_0 
+            on s1_0.id=a1_0.student_id 
+    where
+        a1_0.student_id=?
+2026-10-06T03:21:07.515Z DEBUG 3236 --- [school-management] [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        a1_0.id,
+        a1_0.city,
+        a1_0.country,
+        a1_0.street,
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        addresses a1_0 
+    left join
+        students s1_0 
+            on s1_0.id=a1_0.student_id 
+    where
+        a1_0.student_id=?
+2026-10-06T03:21:07.516Z DEBUG 3236 --- [school-management] [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        a1_0.id,
+        a1_0.city,
+        a1_0.country,
+        a1_0.street,
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        addresses a1_0 
+    left join
+        students s1_0 
+            on s1_0.id=a1_0.student_id 
+    where
+        a1_0.student_id=?
+2026-10-06T03:21:07.517Z DEBUG 3236 --- [school-management] [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        a1_0.id,
+        a1_0.city,
+        a1_0.country,
+        a1_0.street,
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        addresses a1_0 
+    left join
+        students s1_0 
+            on s1_0.id=a1_0.student_id 
+    where
+        a1_0.student_id=?
+2026-10-06T03:21:07.519Z DEBUG 3236 --- [school-management] [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        a1_0.id,
+        a1_0.city,
+        a1_0.country,
+        a1_0.street,
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        addresses a1_0 
+    left join
+        students s1_0 
+            on s1_0.id=a1_0.student_id 
+    where
+        a1_0.student_id=?
+2026-10-06T03:21:07.520Z DEBUG 3236 --- [school-management] [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        a1_0.id,
+        a1_0.city,
+        a1_0.country,
+        a1_0.street,
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        addresses a1_0 
+    left join
+        students s1_0 
+            on s1_0.id=a1_0.student_id 
+    where
+        a1_0.student_id=?
+2026-10-06T03:21:07.521Z DEBUG 3236 --- [school-management] [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        a1_0.id,
+        a1_0.city,
+        a1_0.country,
+        a1_0.street,
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        addresses a1_0 
+    left join
+        students s1_0 
+            on s1_0.id=a1_0.student_id 
+    where
+        a1_0.student_id=?
+2026-10-06T03:21:07.522Z DEBUG 3236 --- [school-management] [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        a1_0.id,
+        a1_0.city,
+        a1_0.country,
+        a1_0.street,
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        addresses a1_0 
+    left join
+        students s1_0 
+            on s1_0.id=a1_0.student_id 
+    where
+        a1_0.student_id=?
+2026-10-06T03:21:07.527Z DEBUG 3236 --- [school-management] [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        count(s1_0.id) 
+    from
+        students s1_0
+2026-10-06T03:21:35.087Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:22:05.087Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:22:05.091Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T03:22:35.087Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:23:05.087Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:23:05.089Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T03:23:34.779Z DEBUG 3236 --- [school-management] [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-10-06T03:23:34.790Z  INFO 3236 --- [school-management] [http-nio-8080-exec-1] c.s.s.service.StudentService             : DATABASE HIT: Finding student 1
+2026-10-06T03:23:34.798Z DEBUG 3236 --- [school-management] [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        students s1_0 
+    where
+        s1_0.id=?
+2026-10-06T03:23:34.800Z ERROR 3236 --- [school-management] [http-nio-8080-exec-1] c.s.s.service.StudentService             : Student lookup failed: ID 1 not found
+2026-10-06T03:23:35.087Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:23:58.213Z DEBUG 3236 --- [school-management] [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-10-06T03:23:58.217Z  INFO 3236 --- [school-management] [http-nio-8080-exec-3] c.s.s.service.StudentService             : DATABASE HIT: Finding student 2
+2026-10-06T03:23:58.218Z DEBUG 3236 --- [school-management] [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        students s1_0 
+    where
+        s1_0.id=?
+2026-10-06T03:23:58.220Z DEBUG 3236 --- [school-management] [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        a1_0.id,
+        a1_0.city,
+        a1_0.country,
+        a1_0.street,
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        addresses a1_0 
+    left join
+        students s1_0 
+            on s1_0.id=a1_0.student_id 
+    where
+        a1_0.student_id=?
+2026-10-06T03:24:03.857Z DEBUG 3236 --- [school-management] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-10-06T03:24:03.863Z  INFO 3236 --- [school-management] [http-nio-8080-exec-5] c.s.s.service.StudentService             : Fetching students page: 0, size: 10, sortBy: id
+2026-10-06T03:24:03.866Z DEBUG 3236 --- [school-management] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        students s1_0 
+    order by
+        s1_0.id 
+    offset
+        ? rows 
+    fetch
+        first ? rows only
+2026-10-06T03:24:03.867Z DEBUG 3236 --- [school-management] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        a1_0.id,
+        a1_0.city,
+        a1_0.country,
+        a1_0.street,
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        addresses a1_0 
+    left join
+        students s1_0 
+            on s1_0.id=a1_0.student_id 
+    where
+        a1_0.student_id=?
+2026-10-06T03:24:03.869Z DEBUG 3236 --- [school-management] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        a1_0.id,
+        a1_0.city,
+        a1_0.country,
+        a1_0.street,
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        addresses a1_0 
+    left join
+        students s1_0 
+            on s1_0.id=a1_0.student_id 
+    where
+        a1_0.student_id=?
+2026-10-06T03:24:03.870Z DEBUG 3236 --- [school-management] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        a1_0.id,
+        a1_0.city,
+        a1_0.country,
+        a1_0.street,
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        addresses a1_0 
+    left join
+        students s1_0 
+            on s1_0.id=a1_0.student_id 
+    where
+        a1_0.student_id=?
+2026-10-06T03:24:03.872Z DEBUG 3236 --- [school-management] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        a1_0.id,
+        a1_0.city,
+        a1_0.country,
+        a1_0.street,
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        addresses a1_0 
+    left join
+        students s1_0 
+            on s1_0.id=a1_0.student_id 
+    where
+        a1_0.student_id=?
+2026-10-06T03:24:03.873Z DEBUG 3236 --- [school-management] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        a1_0.id,
+        a1_0.city,
+        a1_0.country,
+        a1_0.street,
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        addresses a1_0 
+    left join
+        students s1_0 
+            on s1_0.id=a1_0.student_id 
+    where
+        a1_0.student_id=?
+2026-10-06T03:24:03.878Z DEBUG 3236 --- [school-management] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        a1_0.id,
+        a1_0.city,
+        a1_0.country,
+        a1_0.street,
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        addresses a1_0 
+    left join
+        students s1_0 
+            on s1_0.id=a1_0.student_id 
+    where
+        a1_0.student_id=?
+2026-10-06T03:24:03.879Z DEBUG 3236 --- [school-management] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        a1_0.id,
+        a1_0.city,
+        a1_0.country,
+        a1_0.street,
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        addresses a1_0 
+    left join
+        students s1_0 
+            on s1_0.id=a1_0.student_id 
+    where
+        a1_0.student_id=?
+2026-10-06T03:24:03.881Z DEBUG 3236 --- [school-management] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        a1_0.id,
+        a1_0.city,
+        a1_0.country,
+        a1_0.street,
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        addresses a1_0 
+    left join
+        students s1_0 
+            on s1_0.id=a1_0.student_id 
+    where
+        a1_0.student_id=?
+2026-10-06T03:24:03.881Z DEBUG 3236 --- [school-management] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        a1_0.id,
+        a1_0.city,
+        a1_0.country,
+        a1_0.street,
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        addresses a1_0 
+    left join
+        students s1_0 
+            on s1_0.id=a1_0.student_id 
+    where
+        a1_0.student_id=?
+2026-10-06T03:24:03.883Z DEBUG 3236 --- [school-management] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        a1_0.id,
+        a1_0.city,
+        a1_0.country,
+        a1_0.street,
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        addresses a1_0 
+    left join
+        students s1_0 
+            on s1_0.id=a1_0.student_id 
+    where
+        a1_0.student_id=?
+2026-10-06T03:24:03.884Z DEBUG 3236 --- [school-management] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        count(s1_0.id) 
+    from
+        students s1_0
+2026-10-06T03:24:05.088Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:24:05.092Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T03:24:35.087Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:25:05.087Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:25:05.089Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T03:25:35.089Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:26:05.088Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:26:05.091Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T03:26:35.089Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:27:05.087Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:27:05.089Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T03:27:35.087Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:28:05.087Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:28:05.096Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T03:28:35.088Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:29:05.087Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:29:05.090Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T03:29:35.087Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:30:05.086Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:30:05.094Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T03:30:35.088Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:31:05.087Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:31:05.089Z DEBUG 3236 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T03:31:29.348Z  INFO 3236 --- [school-management] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-10-06T03:31:29.355Z  INFO 3236 --- [school-management] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-10-06T03:31:29.361Z  INFO 3236 --- [school-management] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-10-06T03:31:29.364Z  INFO 3236 --- [school-management] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-10-06T03:31:29.375Z  INFO 3236 --- [school-management] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-10-06T03:31:43.034Z  INFO 3624 --- [school-management] [main] c.s.s.SchoolManagementApplication        : Starting SchoolManagementApplication using Java 25.0.2 with PID 3624 (H:\My Files\Learning Now\school-management\target\classes started by Abdulrahim Jalloh in H:\My Files\Learning Now\school-management)
+2026-10-06T03:31:43.038Z DEBUG 3624 --- [school-management] [main] c.s.s.SchoolManagementApplication        : Running with Spring Boot v4.0.5, Spring v7.0.6
+2026-10-06T03:31:43.039Z  INFO 3624 --- [school-management] [main] c.s.s.SchoolManagementApplication        : No active profile set, falling back to 1 default profile: "default"
+2026-10-06T03:31:44.876Z  INFO 3624 --- [school-management] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-10-06T03:31:44.952Z  INFO 3624 --- [school-management] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 65 ms. Found 5 JPA repository interfaces.
+2026-10-06T03:31:45.698Z  INFO 3624 --- [school-management] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-10-06T03:31:45.712Z  INFO 3624 --- [school-management] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-06T03:31:45.713Z  INFO 3624 --- [school-management] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.20]
+2026-10-06T03:31:45.795Z  INFO 3624 --- [school-management] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 2680 ms
+2026-10-06T03:31:46.105Z  INFO 3624 --- [school-management] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-10-06T03:31:46.156Z  INFO 3624 --- [school-management] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.2.7.Final
+2026-10-06T03:31:46.659Z  INFO 3624 --- [school-management] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-10-06T03:31:46.695Z  INFO 3624 --- [school-management] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-10-06T03:31:46.857Z  INFO 3624 --- [school-management] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@794f937a
+2026-10-06T03:31:46.860Z  INFO 3624 --- [school-management] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-10-06T03:31:46.918Z  WARN 3624 --- [school-management] [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-10-06T03:31:46.952Z  INFO 3624 --- [school-management] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:postgresql://localhost:5432/schoolmgn_db]
+	Database driver: PostgreSQL JDBC Driver
+	Database dialect: PostgreSQLDialect
+	Database version: 18.1
+	Default catalog/schema: schoolmgn_db/public
+	Autocommit mode: undefined/unknown
+	Isolation level: READ_COMMITTED [default READ_COMMITTED]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-10-06T03:31:48.310Z  INFO 3624 --- [school-management] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-10-06T03:31:48.408Z  INFO 3624 --- [school-management] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-10-06T03:31:48.487Z  INFO 3624 --- [school-management] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-10-06T03:31:48.723Z DEBUG 3624 --- [school-management] [main] c.s.s.security.JwtAuthenticationFilter   : Filter 'jwtAuthenticationFilter' configured for use
+2026-10-06T03:31:48.795Z  INFO 3624 --- [school-management] [main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2026-10-06T03:31:48.796Z  WARN 3624 --- [school-management] [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2026-10-06T03:31:49.086Z  WARN 3624 --- [school-management] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-10-06T03:31:50.239Z  INFO 3624 --- [school-management] [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint beneath base path '/actuator'
+2026-10-06T03:31:50.352Z  INFO 3624 --- [school-management] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-10-06T03:31:50.369Z  INFO 3624 --- [school-management] [main] c.s.s.SchoolManagementApplication        : Started SchoolManagementApplication in 8.032 seconds (process running for 9.26)
+2026-10-06T03:31:50.750Z DEBUG 3624 --- [school-management] [main] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:31:50.750Z DEBUG 3624 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T03:31:50.776Z DEBUG 3624 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:31:51.274Z  INFO 3624 --- [school-management] [RMI TCP Connection(2)-10.2.0.2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-10-06T03:31:51.274Z  INFO 3624 --- [school-management] [RMI TCP Connection(2)-10.2.0.2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-10-06T03:31:51.278Z  INFO 3624 --- [school-management] [RMI TCP Connection(2)-10.2.0.2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2026-10-06T03:32:20.368Z DEBUG 3624 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:32:50.367Z DEBUG 3624 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T03:32:50.372Z DEBUG 3624 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:33:20.371Z DEBUG 3624 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:33:50.368Z DEBUG 3624 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T03:33:50.370Z DEBUG 3624 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:34:20.369Z DEBUG 3624 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:34:32.404Z DEBUG 3624 --- [school-management] [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-10-06T03:34:50.367Z DEBUG 3624 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T03:34:50.371Z DEBUG 3624 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:35:20.369Z DEBUG 3624 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:35:39.557Z DEBUG 3624 --- [school-management] [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-10-06T03:35:50.369Z DEBUG 3624 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T03:35:50.373Z DEBUG 3624 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:36:20.369Z DEBUG 3624 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:36:50.436Z DEBUG 3624 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T03:36:50.454Z DEBUG 3624 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:37:20.369Z DEBUG 3624 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:37:50.368Z DEBUG 3624 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T03:37:50.371Z DEBUG 3624 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:38:20.368Z DEBUG 3624 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:38:50.369Z DEBUG 3624 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T03:38:50.373Z DEBUG 3624 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:39:20.368Z DEBUG 3624 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:39:50.367Z DEBUG 3624 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T03:39:50.370Z DEBUG 3624 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:40:20.368Z DEBUG 3624 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:40:50.369Z DEBUG 3624 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T03:40:50.374Z DEBUG 3624 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:41:20.369Z DEBUG 3624 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:41:50.389Z DEBUG 3624 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T03:41:50.399Z DEBUG 3624 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:42:20.369Z DEBUG 3624 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:42:50.370Z DEBUG 3624 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T03:42:50.374Z DEBUG 3624 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:43:20.369Z DEBUG 3624 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:43:50.369Z DEBUG 3624 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T03:43:50.373Z DEBUG 3624 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:44:20.368Z DEBUG 3624 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:44:50.368Z DEBUG 3624 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T03:44:50.374Z DEBUG 3624 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:45:20.533Z DEBUG 3624 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:45:50.373Z DEBUG 3624 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T03:45:50.379Z DEBUG 3624 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:46:20.383Z DEBUG 3624 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:46:50.379Z DEBUG 3624 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T03:46:50.383Z DEBUG 3624 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:47:20.376Z DEBUG 3624 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:47:50.376Z DEBUG 3624 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-06T03:47:50.381Z DEBUG 3624 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:48:20.374Z DEBUG 3624 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-06T03:48:36.435Z  INFO 3624 --- [school-management] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-10-06T03:48:36.443Z  INFO 3624 --- [school-management] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-10-06T03:48:36.451Z  INFO 3624 --- [school-management] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-10-06T03:48:36.455Z  INFO 3624 --- [school-management] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-10-06T03:48:36.467Z  INFO 3624 --- [school-management] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
