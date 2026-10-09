@@ -1468,3 +1468,995 @@ io.jsonwebtoken.ExpiredJwtException: JWT expired 169547813 milliseconds ago at 2
         count(*) 
     from
         students s1_0
+2026-10-09T03:01:06.476Z DEBUG 7888 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-09T03:01:06.479Z DEBUG 7888 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-09T03:01:36.474Z DEBUG 7888 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-09T03:02:06.474Z DEBUG 7888 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-09T03:02:06.477Z DEBUG 7888 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-09T03:02:36.472Z DEBUG 7888 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-09T03:03:00.209Z DEBUG 7888 --- [school-management] [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-10-09T03:03:00.228Z  INFO 7888 --- [school-management] [http-nio-8080-exec-2] c.s.s.service.StudentService             : Fetching students page: 0, size: 10, sortBy: id
+2026-10-09T03:03:00.231Z DEBUG 7888 --- [school-management] [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        students s1_0 
+    order by
+        s1_0.id 
+    offset
+        ? rows 
+    fetch
+        first ? rows only
+2026-10-09T03:03:00.239Z DEBUG 7888 --- [school-management] [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        a1_0.id,
+        a1_0.city,
+        a1_0.country,
+        a1_0.street,
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        addresses a1_0 
+    left join
+        students s1_0 
+            on s1_0.id=a1_0.student_id 
+    where
+        a1_0.student_id=?
+2026-10-09T03:03:00.250Z DEBUG 7888 --- [school-management] [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        a1_0.id,
+        a1_0.city,
+        a1_0.country,
+        a1_0.street,
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        addresses a1_0 
+    left join
+        students s1_0 
+            on s1_0.id=a1_0.student_id 
+    where
+        a1_0.student_id=?
+2026-10-09T03:03:00.251Z DEBUG 7888 --- [school-management] [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        a1_0.id,
+        a1_0.city,
+        a1_0.country,
+        a1_0.street,
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        addresses a1_0 
+    left join
+        students s1_0 
+            on s1_0.id=a1_0.student_id 
+    where
+        a1_0.student_id=?
+2026-10-09T03:03:00.252Z DEBUG 7888 --- [school-management] [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        a1_0.id,
+        a1_0.city,
+        a1_0.country,
+        a1_0.street,
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        addresses a1_0 
+    left join
+        students s1_0 
+            on s1_0.id=a1_0.student_id 
+    where
+        a1_0.student_id=?
+2026-10-09T03:03:00.254Z DEBUG 7888 --- [school-management] [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        a1_0.id,
+        a1_0.city,
+        a1_0.country,
+        a1_0.street,
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        addresses a1_0 
+    left join
+        students s1_0 
+            on s1_0.id=a1_0.student_id 
+    where
+        a1_0.student_id=?
+2026-10-09T03:03:00.256Z DEBUG 7888 --- [school-management] [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        a1_0.id,
+        a1_0.city,
+        a1_0.country,
+        a1_0.street,
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        addresses a1_0 
+    left join
+        students s1_0 
+            on s1_0.id=a1_0.student_id 
+    where
+        a1_0.student_id=?
+2026-10-09T03:03:00.257Z DEBUG 7888 --- [school-management] [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        a1_0.id,
+        a1_0.city,
+        a1_0.country,
+        a1_0.street,
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        addresses a1_0 
+    left join
+        students s1_0 
+            on s1_0.id=a1_0.student_id 
+    where
+        a1_0.student_id=?
+2026-10-09T03:03:00.260Z DEBUG 7888 --- [school-management] [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        a1_0.id,
+        a1_0.city,
+        a1_0.country,
+        a1_0.street,
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        addresses a1_0 
+    left join
+        students s1_0 
+            on s1_0.id=a1_0.student_id 
+    where
+        a1_0.student_id=?
+2026-10-09T03:03:00.262Z DEBUG 7888 --- [school-management] [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        a1_0.id,
+        a1_0.city,
+        a1_0.country,
+        a1_0.street,
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        addresses a1_0 
+    left join
+        students s1_0 
+            on s1_0.id=a1_0.student_id 
+    where
+        a1_0.student_id=?
+2026-10-09T03:03:00.263Z DEBUG 7888 --- [school-management] [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        a1_0.id,
+        a1_0.city,
+        a1_0.country,
+        a1_0.street,
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        addresses a1_0 
+    left join
+        students s1_0 
+            on s1_0.id=a1_0.student_id 
+    where
+        a1_0.student_id=?
+2026-10-09T03:03:00.265Z DEBUG 7888 --- [school-management] [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        count(s1_0.id) 
+    from
+        students s1_0
+2026-10-09T03:03:06.474Z DEBUG 7888 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-09T03:03:06.477Z DEBUG 7888 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-09T03:03:20.738Z DEBUG 7888 --- [school-management] [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-10-09T03:03:20.745Z  INFO 7888 --- [school-management] [http-nio-8080-exec-6] c.s.s.service.StudentService             : Fetching students page: 0, size: 10, sortBy: id
+2026-10-09T03:03:20.748Z DEBUG 7888 --- [school-management] [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        students s1_0 
+    order by
+        s1_0.id 
+    offset
+        ? rows 
+    fetch
+        first ? rows only
+2026-10-09T03:03:20.750Z DEBUG 7888 --- [school-management] [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        a1_0.id,
+        a1_0.city,
+        a1_0.country,
+        a1_0.street,
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        addresses a1_0 
+    left join
+        students s1_0 
+            on s1_0.id=a1_0.student_id 
+    where
+        a1_0.student_id=?
+2026-10-09T03:03:20.752Z DEBUG 7888 --- [school-management] [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        a1_0.id,
+        a1_0.city,
+        a1_0.country,
+        a1_0.street,
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        addresses a1_0 
+    left join
+        students s1_0 
+            on s1_0.id=a1_0.student_id 
+    where
+        a1_0.student_id=?
+2026-10-09T03:03:20.754Z DEBUG 7888 --- [school-management] [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        a1_0.id,
+        a1_0.city,
+        a1_0.country,
+        a1_0.street,
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        addresses a1_0 
+    left join
+        students s1_0 
+            on s1_0.id=a1_0.student_id 
+    where
+        a1_0.student_id=?
+2026-10-09T03:03:20.754Z DEBUG 7888 --- [school-management] [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        a1_0.id,
+        a1_0.city,
+        a1_0.country,
+        a1_0.street,
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        addresses a1_0 
+    left join
+        students s1_0 
+            on s1_0.id=a1_0.student_id 
+    where
+        a1_0.student_id=?
+2026-10-09T03:03:20.755Z DEBUG 7888 --- [school-management] [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        a1_0.id,
+        a1_0.city,
+        a1_0.country,
+        a1_0.street,
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        addresses a1_0 
+    left join
+        students s1_0 
+            on s1_0.id=a1_0.student_id 
+    where
+        a1_0.student_id=?
+2026-10-09T03:03:20.758Z DEBUG 7888 --- [school-management] [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        a1_0.id,
+        a1_0.city,
+        a1_0.country,
+        a1_0.street,
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        addresses a1_0 
+    left join
+        students s1_0 
+            on s1_0.id=a1_0.student_id 
+    where
+        a1_0.student_id=?
+2026-10-09T03:03:20.761Z DEBUG 7888 --- [school-management] [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        a1_0.id,
+        a1_0.city,
+        a1_0.country,
+        a1_0.street,
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        addresses a1_0 
+    left join
+        students s1_0 
+            on s1_0.id=a1_0.student_id 
+    where
+        a1_0.student_id=?
+2026-10-09T03:03:20.762Z DEBUG 7888 --- [school-management] [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        a1_0.id,
+        a1_0.city,
+        a1_0.country,
+        a1_0.street,
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        addresses a1_0 
+    left join
+        students s1_0 
+            on s1_0.id=a1_0.student_id 
+    where
+        a1_0.student_id=?
+2026-10-09T03:03:20.763Z DEBUG 7888 --- [school-management] [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        a1_0.id,
+        a1_0.city,
+        a1_0.country,
+        a1_0.street,
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        addresses a1_0 
+    left join
+        students s1_0 
+            on s1_0.id=a1_0.student_id 
+    where
+        a1_0.student_id=?
+2026-10-09T03:03:20.764Z DEBUG 7888 --- [school-management] [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        a1_0.id,
+        a1_0.city,
+        a1_0.country,
+        a1_0.street,
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        addresses a1_0 
+    left join
+        students s1_0 
+            on s1_0.id=a1_0.student_id 
+    where
+        a1_0.student_id=?
+2026-10-09T03:03:20.766Z DEBUG 7888 --- [school-management] [http-nio-8080-exec-6] org.hibernate.SQL                        : 
+    select
+        count(s1_0.id) 
+    from
+        students s1_0
+2026-10-09T03:03:23.115Z DEBUG 7888 --- [school-management] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-10-09T03:03:23.123Z  INFO 7888 --- [school-management] [http-nio-8080-exec-5] c.s.s.service.StudentService             : Fetching students page: 0, size: 10, sortBy: id
+2026-10-09T03:03:23.127Z DEBUG 7888 --- [school-management] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        students s1_0 
+    order by
+        s1_0.id 
+    offset
+        ? rows 
+    fetch
+        first ? rows only
+2026-10-09T03:03:23.129Z DEBUG 7888 --- [school-management] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        a1_0.id,
+        a1_0.city,
+        a1_0.country,
+        a1_0.street,
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        addresses a1_0 
+    left join
+        students s1_0 
+            on s1_0.id=a1_0.student_id 
+    where
+        a1_0.student_id=?
+2026-10-09T03:03:23.132Z DEBUG 7888 --- [school-management] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        a1_0.id,
+        a1_0.city,
+        a1_0.country,
+        a1_0.street,
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        addresses a1_0 
+    left join
+        students s1_0 
+            on s1_0.id=a1_0.student_id 
+    where
+        a1_0.student_id=?
+2026-10-09T03:03:23.134Z DEBUG 7888 --- [school-management] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        a1_0.id,
+        a1_0.city,
+        a1_0.country,
+        a1_0.street,
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        addresses a1_0 
+    left join
+        students s1_0 
+            on s1_0.id=a1_0.student_id 
+    where
+        a1_0.student_id=?
+2026-10-09T03:03:23.135Z DEBUG 7888 --- [school-management] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        a1_0.id,
+        a1_0.city,
+        a1_0.country,
+        a1_0.street,
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        addresses a1_0 
+    left join
+        students s1_0 
+            on s1_0.id=a1_0.student_id 
+    where
+        a1_0.student_id=?
+2026-10-09T03:03:23.136Z DEBUG 7888 --- [school-management] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        a1_0.id,
+        a1_0.city,
+        a1_0.country,
+        a1_0.street,
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        addresses a1_0 
+    left join
+        students s1_0 
+            on s1_0.id=a1_0.student_id 
+    where
+        a1_0.student_id=?
+2026-10-09T03:03:23.138Z DEBUG 7888 --- [school-management] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        a1_0.id,
+        a1_0.city,
+        a1_0.country,
+        a1_0.street,
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        addresses a1_0 
+    left join
+        students s1_0 
+            on s1_0.id=a1_0.student_id 
+    where
+        a1_0.student_id=?
+2026-10-09T03:03:23.139Z DEBUG 7888 --- [school-management] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        a1_0.id,
+        a1_0.city,
+        a1_0.country,
+        a1_0.street,
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        addresses a1_0 
+    left join
+        students s1_0 
+            on s1_0.id=a1_0.student_id 
+    where
+        a1_0.student_id=?
+2026-10-09T03:03:23.142Z DEBUG 7888 --- [school-management] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        a1_0.id,
+        a1_0.city,
+        a1_0.country,
+        a1_0.street,
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        addresses a1_0 
+    left join
+        students s1_0 
+            on s1_0.id=a1_0.student_id 
+    where
+        a1_0.student_id=?
+2026-10-09T03:03:23.143Z DEBUG 7888 --- [school-management] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        a1_0.id,
+        a1_0.city,
+        a1_0.country,
+        a1_0.street,
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        addresses a1_0 
+    left join
+        students s1_0 
+            on s1_0.id=a1_0.student_id 
+    where
+        a1_0.student_id=?
+2026-10-09T03:03:23.144Z DEBUG 7888 --- [school-management] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        a1_0.id,
+        a1_0.city,
+        a1_0.country,
+        a1_0.street,
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        addresses a1_0 
+    left join
+        students s1_0 
+            on s1_0.id=a1_0.student_id 
+    where
+        a1_0.student_id=?
+2026-10-09T03:03:23.146Z DEBUG 7888 --- [school-management] [http-nio-8080-exec-5] org.hibernate.SQL                        : 
+    select
+        count(s1_0.id) 
+    from
+        students s1_0
+2026-10-09T03:03:25.618Z DEBUG 7888 --- [school-management] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-10-09T03:03:25.630Z  INFO 7888 --- [school-management] [http-nio-8080-exec-8] c.s.s.service.StudentService             : Fetching students page: 0, size: 10, sortBy: id
+2026-10-09T03:03:25.634Z DEBUG 7888 --- [school-management] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        students s1_0 
+    order by
+        s1_0.id 
+    offset
+        ? rows 
+    fetch
+        first ? rows only
+2026-10-09T03:03:25.638Z DEBUG 7888 --- [school-management] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        a1_0.id,
+        a1_0.city,
+        a1_0.country,
+        a1_0.street,
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        addresses a1_0 
+    left join
+        students s1_0 
+            on s1_0.id=a1_0.student_id 
+    where
+        a1_0.student_id=?
+2026-10-09T03:03:25.643Z DEBUG 7888 --- [school-management] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        a1_0.id,
+        a1_0.city,
+        a1_0.country,
+        a1_0.street,
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        addresses a1_0 
+    left join
+        students s1_0 
+            on s1_0.id=a1_0.student_id 
+    where
+        a1_0.student_id=?
+2026-10-09T03:03:25.644Z DEBUG 7888 --- [school-management] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        a1_0.id,
+        a1_0.city,
+        a1_0.country,
+        a1_0.street,
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        addresses a1_0 
+    left join
+        students s1_0 
+            on s1_0.id=a1_0.student_id 
+    where
+        a1_0.student_id=?
+2026-10-09T03:03:25.645Z DEBUG 7888 --- [school-management] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        a1_0.id,
+        a1_0.city,
+        a1_0.country,
+        a1_0.street,
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        addresses a1_0 
+    left join
+        students s1_0 
+            on s1_0.id=a1_0.student_id 
+    where
+        a1_0.student_id=?
+2026-10-09T03:03:25.646Z DEBUG 7888 --- [school-management] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        a1_0.id,
+        a1_0.city,
+        a1_0.country,
+        a1_0.street,
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        addresses a1_0 
+    left join
+        students s1_0 
+            on s1_0.id=a1_0.student_id 
+    where
+        a1_0.student_id=?
+2026-10-09T03:03:25.646Z DEBUG 7888 --- [school-management] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        a1_0.id,
+        a1_0.city,
+        a1_0.country,
+        a1_0.street,
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        addresses a1_0 
+    left join
+        students s1_0 
+            on s1_0.id=a1_0.student_id 
+    where
+        a1_0.student_id=?
+2026-10-09T03:03:25.648Z DEBUG 7888 --- [school-management] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        a1_0.id,
+        a1_0.city,
+        a1_0.country,
+        a1_0.street,
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        addresses a1_0 
+    left join
+        students s1_0 
+            on s1_0.id=a1_0.student_id 
+    where
+        a1_0.student_id=?
+2026-10-09T03:03:25.649Z DEBUG 7888 --- [school-management] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        a1_0.id,
+        a1_0.city,
+        a1_0.country,
+        a1_0.street,
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        addresses a1_0 
+    left join
+        students s1_0 
+            on s1_0.id=a1_0.student_id 
+    where
+        a1_0.student_id=?
+2026-10-09T03:03:25.650Z DEBUG 7888 --- [school-management] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        a1_0.id,
+        a1_0.city,
+        a1_0.country,
+        a1_0.street,
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        addresses a1_0 
+    left join
+        students s1_0 
+            on s1_0.id=a1_0.student_id 
+    where
+        a1_0.student_id=?
+2026-10-09T03:03:25.651Z DEBUG 7888 --- [school-management] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        a1_0.id,
+        a1_0.city,
+        a1_0.country,
+        a1_0.street,
+        s1_0.id,
+        s1_0.age,
+        s1_0.email,
+        s1_0.name 
+    from
+        addresses a1_0 
+    left join
+        students s1_0 
+            on s1_0.id=a1_0.student_id 
+    where
+        a1_0.student_id=?
+2026-10-09T03:03:25.652Z DEBUG 7888 --- [school-management] [http-nio-8080-exec-8] org.hibernate.SQL                        : 
+    select
+        count(s1_0.id) 
+    from
+        students s1_0
+2026-10-09T03:03:36.474Z DEBUG 7888 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-09T03:04:00.578Z DEBUG 7888 --- [school-management] [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-10-09T03:04:00.590Z  INFO 7888 --- [school-management] [http-nio-8080-exec-9] c.s.s.service.CourseService              : Fetching all courses
+2026-10-09T03:04:00.593Z DEBUG 7888 --- [school-management] [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        c1_0.id,
+        c1_0.description,
+        c1_0.name,
+        c1_0.teacher_id 
+    from
+        courses c1_0 
+    order by
+        c1_0.id 
+    offset
+        ? rows 
+    fetch
+        first ? rows only
+2026-10-09T03:04:00.603Z DEBUG 7888 --- [school-management] [http-nio-8080-exec-9] org.hibernate.SQL                        : 
+    select
+        count(c1_0.id) 
+    from
+        courses c1_0
+2026-10-09T03:04:05.221Z DEBUG 7888 --- [school-management] [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-10-09T03:04:05.230Z  INFO 7888 --- [school-management] [http-nio-8080-exec-10] c.s.s.service.CourseService              : Fetching all courses
+2026-10-09T03:04:05.232Z DEBUG 7888 --- [school-management] [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        c1_0.id,
+        c1_0.description,
+        c1_0.name,
+        c1_0.teacher_id 
+    from
+        courses c1_0 
+    order by
+        c1_0.id 
+    offset
+        ? rows 
+    fetch
+        first ? rows only
+2026-10-09T03:04:05.238Z DEBUG 7888 --- [school-management] [http-nio-8080-exec-10] org.hibernate.SQL                        : 
+    select
+        count(c1_0.id) 
+    from
+        courses c1_0
+2026-10-09T03:04:06.474Z DEBUG 7888 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-09T03:04:06.477Z DEBUG 7888 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-09T03:04:36.474Z DEBUG 7888 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-09T03:05:06.475Z DEBUG 7888 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-09T03:05:06.478Z DEBUG 7888 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-09T03:05:28.867Z DEBUG 7888 --- [school-management] [http-nio-8080-exec-3] org.hibernate.SQL                        : 
+    select
+        u1_0.id,
+        u1_0.email,
+        u1_0.password,
+        u1_0.role,
+        u1_0.username 
+    from
+        users u1_0 
+    where
+        u1_0.username=?
+2026-10-09T03:05:36.474Z DEBUG 7888 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-09T03:06:06.474Z DEBUG 7888 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-09T03:06:06.480Z DEBUG 7888 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-09T03:06:36.474Z DEBUG 7888 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-09T03:07:06.474Z DEBUG 7888 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-09T03:07:06.479Z DEBUG 7888 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-09T03:07:37.599Z DEBUG 7888 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
+2026-10-09T03:08:06.476Z DEBUG 7888 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        courses c1_0
+2026-10-09T03:08:06.482Z DEBUG 7888 --- [school-management] [scheduling-1] org.hibernate.SQL                        : 
+    select
+        count(*) 
+    from
+        students s1_0
