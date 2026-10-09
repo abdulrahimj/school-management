@@ -7,6 +7,7 @@ import com.school.school_management.dto.response.TeacherResponse;
 import com.school.school_management.model.Course;
 import com.school.school_management.model.Teacher;
 import com.school.school_management.repo.TeacherRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -17,6 +18,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
+@Slf4j
 public class TeacherService {
 
    private final TeacherRepository teacherRepository;
@@ -37,6 +39,8 @@ public class TeacherService {
               ? Sort.by(sortBy).ascending() : Sort.by(sortBy).descending();
 
       Pageable pageable = PageRequest.of(pageNum, pageSize, sort);
+
+      log.info("Fetching all teachers from database");
 
       Page<Teacher> page = teacherRepository.findAll(pageable);
 
@@ -66,17 +70,25 @@ public class TeacherService {
 
    //Get one teacher by ID
    public TeacherResponse getTeacherById(Long id) {
+
+      log.info("Fetching teacher with ID: {}", id);
+
       return mapToResponse(findTeacherById(id));
    }
 
    //Create a teacher
    public TeacherResponse createTeacher(TeacherRequest request) {
+
+      log.info("Attempting to register teaching with email: {}", request.email());
+
       //Check if teacher is already in the system
       if (teacherRepository.findByEmail(request.email()).isPresent()) {
+         log.warn("Teacher creation rejected: Email '{}' is already in use", request.email());
          throw new RuntimeException("Teacher with email " + request.email() + " already exists");
       }
       Teacher teacher = new Teacher(request.name(), request.email(), request.specialization());
       Teacher saved = teacherRepository.save(teacher);
+      log.info("Teacher registered successfully with ID: {}", saved.getId());
       return mapToResponse(saved);
    }
 
@@ -91,12 +103,16 @@ public class TeacherService {
 
    //Delete teacher
    public void deleteTeacher(Long id) {
+      log.warn("Deleting teacher with ID: {}", id);
       findTeacherById(id);
       teacherRepository.deleteById(id);
+      log.info("Teacher ID: {} deleted successfully", id);
    }
 
    //Get all courses taught by teacher
    public Set<CourseResponse> getCoursesByTeacher(Long teacherId) {
+
+      log.info("Fetching assigned courses for teacher ID: {}", teacherId);
 
       //check if teacher exists
       Teacher teacher = findTeacherById(teacherId);
